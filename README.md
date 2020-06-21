@@ -7,27 +7,27 @@
 </h1>
 
 <p align="center">
-  <a href="#sobre">Sobre</a> |
-  <a href="#tecnologias-utilizadas">Tecnologias</a> |
-  <a href="#objetivo">Objetivo</a> |
-  <a href="#como-baixar-o-projeto">Baixar</a>
+  <a href="#bookmark-sobre">Sobre</a> |
+  <a href="#computer-tecnologias-utilizadas">Tecnologias</a> |
+  <a href="#dart-objetivo">Objetivo</a> |
+  <a href="#package-como-baixar-o-projeto">Baixar</a>
 </p>
 
-## Sobre
+## :bookmark: Sobre
 Site para pesquisa e cadastro de receitas culinárias.
 Ainda em desenvolvimento...
 
-## Tecnologias Utilizadas
+## :computer: Tecnologias Utilizadas
 - HTML
 - CSS
 - JavaScript
 
-## Objetivo
+## :dart: Objetivo
 Site tem como objetivo disponibilizar:
 - Cadastro de receitas culinárias
 - Visualização de receitas culinárias
 
-## Como Baixar o projeto
+## :package: Como Baixar o projeto
 Pelo seu terminal, escolha um local para o projeto e rode os comandos:
 ```bash
   # Clonar o repositório
