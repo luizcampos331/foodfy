@@ -1,0 +1,156 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+
+* {
+  /*Margem, preenchimento e bordas da página toda com zero*/
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  /*Familia de fontes Roboto*/
+  font-family: 'Roboto', sans-serif;
+  /*Display flexivel / para que o rodape fique no fim da página*/
+  display: flex;
+  /*Direção do display em colunas / para que o rodape fique no fim da página*/
+  flex-direction: column;
+  /*Posição do html todo relativa / para que o rodape fique no fim da página*/
+  position: relative;
+  /*Altura mínima do html em 100% / para que o rodape fique no fim da página*/
+  min-height: 100%;
+}
+
+body {
+  /*Margem no topo e laterais em 0 e no fundo com 62px / para que o rodape fique no fim da página*/
+  margin: 0 0 62px;
+}
+
+.content-page {
+  /*Largura do conteúdo da página*/
+  width: 940px;
+  /*Display flexivel*/
+  display: flex;
+  /*Direção do display em colunas*/
+  flex-direction: column;
+  /*Margem no topo em 0, nas laterias automatico e entre o conteudo e o rodape 50px*/
+  margin: 0 auto 50px;
+}
+
+.content-page header {
+  /*Display flexivel, por padrão a direção do display fica em linha*/
+  display: flex;
+  /*Itens alinhados os centro para ficar alinhado com a logo*/
+  align-items: center;
+  /*Margem entre o cabeçalho e o topo do html*/
+  margin-top: 36.1px;
+  /*Margem entre o cabeçalho e o conteudo do html*/
+  margin-bottom: 30px;
+}
+
+.links {
+  /*Margem entre a logo e os links do menu*/
+  margin-left: 122.4px;
+}
+
+.links a {
+  /*Margem entre os links do menu*/
+  margin-right: 30px;
+  /*Remoção da sublinhado dos links do menu*/
+  text-decoration: none;
+  /*Cor do texto dos links do menu*/
+  color: #111111
+}
+
+.rectangle {
+  /*Altura do retangulo inicial do conteúdo*/
+  height: 366px;
+  /*Cor do retangulo*/
+  background: #FBDFDB;
+  /*Arredondamento das bordas do retangulo*/
+  border-radius: 30px;
+  /*Display flexivel, por padrão a direção do display fica em linha*/
+  display: flex;
+  /*Espaço entre os elementos do retangulo*/
+  justify-content: space-between;
+}
+
+.rectangle .texts {
+  /*Margem de 117px do topo e 60px da esquerda dos textos do retangulo*/
+  margin: 117px 0 0 60px;
+}
+
+.rectangle .texts p {
+  /*Margem do topo das tags P*/
+  margin-top: 10px;
+  /*Opacidade do texto da tag P*/
+  opacity: 0.7;
+  /*Tamanho do fonte do texto da tag P*/
+  font-size: 18px;
+  /*Espaço entre as linhas do texto da tag P*/
+  line-height: 28px;
+  /*Largura máxima do texto da tag P, utilizado para quebra de linha*/
+  max-width: 316px;
+}
+
+.rectangle .image {
+  /*margem de 66px no topo e 100px da direita da imagem do chef*/
+  margin: 66px 100px 0 0;
+}
+
+.content .title {
+  /*Margem do topo do titulo*/
+  margin-top: 50px;
+}
+
+.recipes {
+  /*Margem entre as receitas e o titulo*/
+  margin-top: 20px;
+  /*Dispaly em grade*/
+  display: grid;
+  /*grade com 3 colunas do mesmo tamanho*/
+  grid-template-columns: 1fr 1fr 1fr;
+  /*Espacamento entre as celulas do grid*/
+  gap: 20px;
+}
+
+.recipes .recipe img {
+  /*Arredondamento das bordas do retangulo*/
+  border-radius: 15px;
+  /*Largura das imagens das receitas*/
+  width: 300px;
+  /*Altura das imagens das receitas*/
+  height: 140px;
+}
+
+.recipes .recipe .name {
+  /*Tamanho da fonte do nome das receitas*/
+  font-size: 18px;
+  /*Cor do texto do nome das receitas*/
+  color: #111111;
+}
+
+.recipes .recipe .author {
+  /*Tamanho da fonte do nome do autor do receita*/
+  font-size: 14px;
+  /*Cor do nome do autor da receita*/
+  color: #777777;
+}
+
+footer {
+  /*Cor de fundo do rodapé*/
+  background: #eeeeee;
+  /*Largura do rodapé*/
+  width: 100%;
+  /*Altura do rodapé*/
+  height: 62px;
+  /*Display flexivel*/
+  display: flex;
+  /*alinhamento do texto no eixo Y*/
+  align-items: center;
+  /*alinhamento do texto no eixo X*/
+  justify-content: center;
+  /*Posisão do texto absoluta / para que o rodape fique no fim da página*/
+  position: absolute;
+  /*Distancia entre o rodapé e o fundo / para que o rodape fique no fim da página*/
+  bottom: 0;
+}

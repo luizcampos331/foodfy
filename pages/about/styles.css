@@ -1,0 +1,75 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+
+* {
+  /*Margin, preenchimento e bordas da página toda*/
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 62px;
+}
+
+.content-page {
+  width: 940px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 50px;
+}
+
+.content-page header {
+  display: flex;
+  align-items: center;
+  margin-top: 36.1px;
+  margin-bottom: 50px;
+}
+
+.content-page .links {
+  padding-left: 122.4px;
+}
+
+.content-page .links a {
+  padding-right: 30px;
+  text-decoration: none;
+  color: #111111
+}
+
+.content-page .content h2, h3 {
+  margin-bottom: 20px;
+  color: #111111;
+}
+
+.content-page .content p {
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #444444;
+  line-height: 28px;
+}
+
+footer {
+  /*Cor de fundo do rodapé*/
+  background: #eeeeee;
+  /*Largura do rodapé*/
+  width: 100%;
+  /*Altura do rodapé*/
+  height: 62px;
+  /*Display flexivel*/
+  display: flex;
+  /*alinhamento do texto no eixo Y*/
+  align-items: center;
+  /*alinhamento do texto no eixo X*/
+  justify-content: center;
+  /*Posisão do texto absoluta / para que o rodape fique no fim da página*/
+  position: absolute;
+  /*Distancia entre o rodapé e o fundo / para que o rodape fique no fim da página*/
+  bottom: 0;
+}
