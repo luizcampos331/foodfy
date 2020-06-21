@@ -107,18 +107,7 @@ body {
   height: 200px;
   margin: 30px;
   border-radius: 15px;
-  background: #111;
-  display: flex;
-  align-items: center;
   background: url('') center;
-}
-
-.modal .image img {
-  position: relative;
-}
-
-.modal .texts {
-  background: #fff;
 }
 
 .modal .name {
