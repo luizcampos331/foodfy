@@ -14,7 +14,7 @@
 </p>
 
 ## :bookmark: Sobre
-Site para pesquisa e cadastro de receitas culinárias.
+Site para visualização de receitas culinárias. </br>
 Ainda em desenvolvimento...
 
 ## :computer: Tecnologias Utilizadas
@@ -24,7 +24,6 @@ Ainda em desenvolvimento...
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
-- Cadastro de receitas culinárias
 - Visualização de receitas culinárias
 
 ## :package: Como Baixar o projeto
