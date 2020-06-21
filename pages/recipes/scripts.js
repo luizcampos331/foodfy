@@ -15,15 +15,14 @@ for(let recipe of recipes) {
   //addEventListener é um ouvidor de eventos, nesse caso o evento de click
   recipe.addEventListener("click", function() {
     const recipeImg = recipe.querySelector('img').getAttribute('src')
-    const recipeImgAlt = recipe.querySelector('img').getAttribute('alt')
     const recipeName = recipe.querySelector('.name').innerHTML;
     const recipeAuthor = recipe.querySelector('.author').innerHTML;
 
+    console.log(`url(../../assets/${recipeImg})`)
     //Adicionando o "active" a lista de classes do modalOverlay
     modalOverlay.classList.add('active');
-
-    modalOverlay.querySelector('img').src = recipeImg
-    modalOverlay.querySelector('img').alt = recipeImgAlt
+    
+    modalOverlay.querySelector('.image').style.backgroundImage = `url(../../${recipeImg})`
     modalOverlay.querySelector('.name').innerHTML = recipeName
     modalOverlay.querySelector('.author').innerHTML = recipeAuthor
   });
