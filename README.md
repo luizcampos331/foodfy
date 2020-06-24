@@ -1,9 +1,9 @@
 <h1 align="center">
-  <img src="assets/logo.png" height="30">
+  <img src="public/assets/logo.png" height="30">
 </h1>
 
 <h1>
-  <img src="assets/demo.gif">
+  <img src="public/assets/demo.gif">
 </h1>
 
 <p align="center">
@@ -21,6 +21,9 @@ Ainda em desenvolvimento...
 - HTML
 - CSS
 - JavaScript
+- NodeJS
+- Express
+- Nunjucks
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
@@ -34,5 +37,8 @@ Pelo seu terminal, escolha um local para o projeto e rode os comandos:
 
   # Entrar no diretório
   $ cd foodfy
+
+  # Instalar dependências
+  $ npm install
 
 ```
