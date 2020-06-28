@@ -1,0 +1,27 @@
+ <!-- Extendendo as partes repetidas para o layout.njk -->
+{% extends "admin/layout.njk" %}
+
+<!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
+{% block content %}
+
+  <div class="title">
+    <h2>Gerenciar Receitas</h2>
+    <a href="/admin/recipes/create">Nova receita</a>
+  </div>
+
+  <div class="recipes-admin">
+
+    {% for item in items %}
+      <div class="recipe-admin">
+        <img src="../assets/{{item.image}}" alt="burger">
+        <div class="texts">
+          <p class="name">{{item.title}}</p>
+          <p class="author">{{item.author}}</p>
+          <a href="/admin/recipes/{{item.id}}">Visualizar</a>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

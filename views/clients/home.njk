@@ -1,5 +1,5 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
-{% extends "layout.njk" %}
+{% extends "clients/layout.njk" %}
 
 <!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
 {% block content %}
@@ -32,7 +32,7 @@
         <!-- Caso o item seja accessed igual a true ele é mostrado na home -->
         {%if item.accessed%}
           <div id="{{item.id}}" class="recipe">
-            <img src="{{item.image}}" alt="{{item.title}}">
+            <img src="assets/{{item.image}}" alt="{{item.title}}">
             <p class="name">{{item.title}}</p>
             <p class="author">{{item.author}}</p>
           </div>

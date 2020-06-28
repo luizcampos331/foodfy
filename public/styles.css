@@ -26,7 +26,8 @@ body {
   margin: 0 0 62px;
 }
 
-.content-page {
+.content-page,
+.content-page-admin {
   /*Largura do conteúdo da página*/
   width: 940px;
   /*Display flexivel*/
@@ -61,7 +62,6 @@ body {
   /*Cor do texto dos links do menu*/
   color: #111111
 }
-
 
 footer {
   /*Cor de fundo do rodapé*/
@@ -158,7 +158,7 @@ footer {
   color: #777777;
 }
 
-/*===Página - About===*/
+/*=== Página - About ===*/
 .content-page .about h2, h3 {
   margin-bottom: 20px;
   color: #111111;
@@ -171,7 +171,7 @@ footer {
   line-height: 28px;
 }
 
-/*===Página - Recipes===*/
+/*=== Página - Recipes ===*/
 .recipes_page {
   margin-top: 56px;
   display: grid;
@@ -197,7 +197,7 @@ footer {
   color: #777777;
 }
 
-/*===Página - Recipes-details===*/
+/*=== Página - Recipes-details ===*/
 .recipes_details_page {
   margin-top: 26px;
 }
@@ -205,6 +205,14 @@ footer {
 .recipes_details_page img {
   border-radius: 15px;
   margin-bottom: 50px;
+}
+
+.recipes_details_page .cover {
+  width: 100%;
+  height: 280px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  object-fit: cover;
 }
 
 .recipes_details_page .texts_center {
@@ -259,4 +267,236 @@ footer {
   font-size: 18px;
   color: #444444;
   line-height: 28px;
+}
+
+/* === ADMIN === */
+/* página index*/
+.header-admin {
+  height: 80px;
+  background: #111;
+}
+
+.header-admin header {
+  /*Largura do conteúdo da página*/
+  width: 940px;
+  /*Display flexivel*/
+  display: flex;
+  /*Direção do display em colunas*/
+  flex-direction: column;
+  /*Margem no topo em 0, nas laterias automatico e entre o conteudo e o rodape 50px*/
+  margin: 0 auto 50px;
+}
+
+.header-admin header a {
+  margin: 27px 0 26.1px;
+  width: 90.6px;
+  height: 26.9px;
+}
+
+.content-page-admin .title {
+  margin: 50px 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-page-admin .title h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111
+}
+
+.content-page-admin .title a {
+  background: #6558C3;
+  padding: 9px 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.content-page-admin .recipes-admin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.content-page-admin .recipe-admin {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.content-page-admin img {
+  width: 172px;
+  height: 80px;
+  border-radius: 8.57px;
+  margin-right: 20px;
+}
+
+.content-page-admin .texts .name {
+  font-size: 18px;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.content-page-admin .texts .author {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.content-page-admin .texts a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #6558C3;
+  font-weight: bold;
+}
+
+/*página show*/
+.recipes_details_admin .init {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50px 0 20px;
+}
+
+.recipes_details_admin .init h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111
+}
+
+.recipes_details_admin .init a {
+  background: #6558C3;
+  padding: 9px 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.recipes_details_admin .cover {
+  width: 100%;
+  height: 280px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  object-fit: cover;
+}
+
+.recipes_details_admin .texts_center {
+  text-align: center;
+}
+
+.recipes_details_admin .texts_center h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.recipes_details_admin .texts_center p {
+  font-size: 20px;
+  color: #777;
+  margin-bottom: 31px;
+}
+
+.recipes_details_admin .title-details {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 19px;
+}
+
+.recipes_details_admin .ingredients,
+.recipes_details_admin .steps {
+  font-size: 18px;
+  line-height: 28px;
+  color: #444;
+  margin-bottom: 41px;
+}
+
+.recipes_details_admin .information {
+  font-size: 18px;
+  line-height: 28px;
+  color: #444;
+}
+
+.content-page-admin .forms {
+  position: relative;
+  margin-top: 50px;
+}
+
+.content-page-admin .title-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+form .delete{
+  padding: 9px 20px;
+  background: #DC4747;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  right: 165px;
+}
+
+form .save{
+  padding: 9px 20px;
+  background: #6558C3;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form .item {
+  margin-bottom: 30px;
+}
+
+form .item div {
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+}
+
+form .item input {
+  width: 100%;
+  height: 49px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 0 20px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+form .item button {
+  background: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  color: #6558C3;
+  margin-top: 15px;
+  cursor: pointer;
+  outline: 0;
+}
+
+form .item textarea {
+  width: 100%;
+  height: 257px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  padding: 18px 20px;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10px;
+  box-sizing: border-box;
 }

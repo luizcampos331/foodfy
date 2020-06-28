@@ -1,0 +1,54 @@
+ <!-- Extendendo as partes repetidas para o layout.njk -->
+{% extends "admin/layout.njk" %}
+
+{% block logo %}
+  <img src="../../assets/logo-branca.png" alt="Foodfy">
+{% endblock %}
+
+<!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
+{% block content %}
+
+  <div class="recipes_details_admin">
+    <div class="init">
+      <h2>Receita: {{item.title}}</h2>
+      <a href="/admin/recipes/{{item.id}}/edit" class="button">Editar receita</a>
+    </div>
+    
+    <img class="cover" src="/assets/{{ item.image }}" alt="{{ item.title }}">
+
+    <div class="texts_center">
+      <h1>{{item.title}}</h1>
+      <p>{{item.author}}</p>
+    </div>
+
+    <div>
+      <div class="title-details">
+        <h3>Ingredientes</h3>
+      </div>
+      <div class="ingredients">
+        {% for ingredients in item.ingredients %}
+          <p>- {{ingredients}}</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div>
+      <div class="title-details">
+        <h3>Modo de preparo</h3>
+      </div>
+      <div class="steps">
+        {% for steps in item.preparation %}
+          <p>- {{steps}}</p>
+        {% endfor%}
+      </div>
+    </div>
+
+    <div>
+      <div class="title-details">
+        <h3>Informações adicionais</h3>
+      </div>
+      <p class="information">{{item.information}}</p>
+    </div>
+  </div>
+
+{% endblock %}

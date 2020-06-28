@@ -2,14 +2,25 @@
 const express = require('express');
 //Importação do nunjucks para template engine
 const nunjucks = require('nunjucks');
-//Importando array de data.js
-const recipes_data = require('./data');
+
+//Importando as funcionalidades de routes em uma variável
+const routes = require('./routes');
+const methodOverride = require('method-override');
+
+const { urlencoded } = require('express');
 
 //Colocando funcionalidades do express na constante server
 const server = express();
 
-//Server usando arquivos estáticos (css) da pasta public
+//Responsável por liberar a passagem de dados de um formulário POST via req.body
+server.use(urlencoded({ extended: true }));
+//Server poderá usar arquivos estáticos (css) da pasta public
 server.use(express.static('public'));
+/*Caso seja pedido, irá sobreescrever o method da página, nesse caso será para
+transformar o method POST em PUT */
+server.use(methodOverride('_method'));
+//Server irá usar as funcionalidades do routes
+server.use(routes);
 
 //setando que o server ira ser um motor de visualização (view engine) do tipo html
 server.set('view engine', 'njk');
@@ -25,31 +36,5 @@ nunjucks.configure('views', {
   noCache: true
 });
 
-//Rota tipo GET para a página home.njk
-server.get('/', function (req, res) {
-  //Retornando a página index renderizada
-  return res.render('home', {items: recipes_data})
-});
-
-//Rota tipo GET para a página about.njk
-server.get('/sobre', function (req, res) {
-  //Retornando a página index renderizada
-  return res.render('about')
-});
-
-//Rota tipo GET para a página recipes.njk
-server.get('/receitas', function (req, res) {
-  //Retornando a página index renderizada
-  return res.render('recipes', {items: recipes_data})
-});
-
-//Rota tipo GET para a página recipes-details.njk
-server.get("/receitas/:index", function (req, res) {
-  //Buscando index da url
-  const recipeIndex = req.params.index;
-
-  //Passando o valor do index e o item que esta na posição "index" do array data.js
-  return res.render('recipes-details', {recipeIndex, item: recipes_data[recipeIndex]})
-})
 
 server.listen(5000);

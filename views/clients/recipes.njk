@@ -1,5 +1,5 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
-{% extends "layout.njk" %}
+{% extends "clients/layout.njk" %}
     
 <!-- Conteúdo do bloco head irá substituir o head no layout.njk -->
 {% block head %}
@@ -14,7 +14,7 @@
     <!-- Laço para construção das receitas baseado no array data.js -->
     {% for item in items %}
       <div id="{{item.id}}" class="recipe">
-        <img src="{{item.image}}" alt="{{item.title}}">
+        <img src="assets/{{item.image}}" alt="{{item.title}}">
         <p class="name">{{item.title}}</p>
         <p class="author">{{item.author}}</p>
       </div>
