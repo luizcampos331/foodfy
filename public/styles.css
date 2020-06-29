@@ -1,5 +1,10 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
 
+/*Variáveis de cor*/
+:root {
+  --purple: #6558C3;
+}
+
 /*===Conteúdo comum a todas as páginas===*/
 * {
   /*Margem, preenchimento e bordas da página toda com zero*/
@@ -34,7 +39,7 @@ body {
   display: flex;
   /*Direção do display em colunas*/
   flex-direction: column;
-  /*Margem no topo em 0, nas laterias automatico e entre o conteudo e o rodape 50px*/
+  /*Margem no topo em 0, nas laterais automatico e entre o conteudo e o rodape 50px*/
   margin: 0 auto 50px;
 }
 
@@ -160,20 +165,28 @@ footer {
 
 /*=== Página - About ===*/
 .content-page .about h2, h3 {
+  /*Margem no fundo*/
+  /*Cor do texto*/
   margin-bottom: 20px;
   color: #111111;
 }
 
 .content-page .about p {
+  /*Margem no fundo*/
   margin-bottom: 30px;
+  /*Tamanho da fonte*/
   font-size: 18px;
+  /*Cor do texto*/
   color: #444444;
+  /*Espaçamento entre linhas*/
   line-height: 28px;
 }
 
 /*=== Página - Recipes ===*/
 .recipes_page {
+  /*Margem no topo*/
   margin-top: 56px;
+  /*Display em grade*/
   display: grid;
   /*grade com 3 colunas do mesmo tamanho*/
   grid-template-columns: 1fr 1fr 1fr;
@@ -182,321 +195,477 @@ footer {
 }
 
 .recipes_page .recipe img {
+  /*Arredondamento dos cantos da imagem*/
   border-radius: 15px;
+  /*Largura da imagem*/
   width: 300px;
+  /*Altura da imagem*/
   height: 140px;
 }
 
 .recipes_page .recipe .name {
+  /*Tamanho da fonte*/
   font-size: 18px;
+  /*Cor do texto*/
   color: #111111;
 }
 
 .recipes_page .recipe .author {
+  /*Tamanho da fonte*/
   font-size: 14px;
+  /*Cor do texto*/
   color: #777777;
 }
 
 /*=== Página - Recipes-details ===*/
 .recipes_details_page {
+  /*Margem no topo*/
   margin-top: 26px;
 }
 
 .recipes_details_page img {
-  border-radius: 15px;
-  margin-bottom: 50px;
-}
-
-.recipes_details_page .cover {
+  /*Largura total da imagem*/
   width: 100%;
+  /*Altura da imagem*/
   height: 280px;
+  /*Arredondamento dos cantos da imagem*/
   border-radius: 15px;
+  /*Margem no fundo*/
   margin-bottom: 50px;
+  /*Imagem por proporsão originais, cortando-a por causa da nova altura*/
   object-fit: cover;
+
 }
 
 .recipes_details_page .texts_center {
+  /*Centralização do texto*/
   text-align: center;
 }
 
 .recipes_details_page .texts_center h1 {
+  /*Tamanho da fonte*/
   font-size: 36px;
+  /*Cor do texto*/
   color: #111111;
+  /*Margem no fundo*/
   margin-bottom: 4px;
 }
 
 .recipes_details_page .texts_center p {
+  /*Tamanho da fonte*/
   font-size: 20px;
+  /*Cor do texto*/
   color: #777777;
+  /*Margem no fundo*/
   margin-bottom: 50px;
 }
 
 .recipes_details_page .title {
+  /*display flexivel para titulo e botão de esconder ficarem na mesma linha*/
   display: flex;
+  /*Alinhamento com base na linha, para o titulo e botão iniciarem do começo da linha*/
   align-items: baseline;
+  /*Margem do fundo*/
   margin-bottom: 20px;
 }
 
 .recipes_details_page .title h3 {
+  /*Margem 0 para obedecer somente a margem especificada anteriormente*/
   margin-bottom: 0;
+  /*Tamanho da fonte*/
   font-size: 24px;
+  /*Cor do texto*/
   color: #111111;
+  /*Margem a direita*/
   margin-right: 8px;
 }
 
 .recipes_details_page .title p {
+  /*Tamanho da fonte*/
   font-size: 12px;
+  /*Cor do texto*/
   color: #999999;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Tipo do cursor para ponteiro*/
   cursor: pointer;
 }
 
 .recipes_details_page .maximize {
+  /*Caso o botão ESCONDER seja clicado, o texto abaixo será escondido com
+  a inserção da classe .maximize via javascript*/
   display: none;
 }
 
 .recipes_details_page ul {
+  /*Tamanho da fonte*/
   font-size: 18px;
+  /*Cor do texto*/
   color: #444444;
+  /*Espaçamento entre linhas*/
   line-height: 28px;
-  list-style-position: inside;
+  /*Posição das listas (ul, li) alinhado com o elemento pai*/
+  list-style: inside;
+  /*Margem do fundo*/
   margin-bottom: 39px;
 }
 
 .recipes_details_page p {
+  /*Tamanho da fonte*/
   font-size: 18px;
+  /*Cor do texto*/
   color: #444444;
+  /*Espaçamento entre linhas*/
   line-height: 28px;
 }
 
 /* === ADMIN === */
 /* página index*/
 .header-admin {
+  /*Altura do cabeçalho Admin*/
   height: 80px;
+  /*Cor de fundo*/
   background: #111;
 }
 
 .header-admin header {
-  /*Largura do conteúdo da página*/
+  /*Largura do espaço utilizavel do cabeçalho*/
   width: 940px;
   /*Display flexivel*/
   display: flex;
   /*Direção do display em colunas*/
   flex-direction: column;
-  /*Margem no topo em 0, nas laterias automatico e entre o conteudo e o rodape 50px*/
+  /*Margem no topo em 0, nas laterais automatico e entre o cabeçalho e o conteúdo 50px*/
   margin: 0 auto 50px;
 }
 
 .header-admin header a {
-  margin: 27px 0 26.1px;
+  /*preenchimento do logo de 27 no topo, 0 nas laterais e 26.1 no fundo*/
+  padding: 27px 0 26.1px;
+  /*Largura*/
   width: 90.6px;
+  /*Altura*/
   height: 26.9px;
 }
 
 .content-page-admin .title {
+  /*Margem de 50 no topo, 0 nas laterais e 26 no fundo*/
   margin: 50px 0 26px;
+  /*Display flexivel, item no padrão, alinhados lado a lado*/
   display: flex;
+  /*Alinhamento central no eixo x */
   align-items: center;
+  /*Cada elemento com espaço total entre eles, como só há dois elementos, cada
+  um esta num extremo do elemento pai*/
   justify-content: space-between;
 }
 
 .content-page-admin .title h2 {
+  /*Tamanho da fonte*/
   font-size: 24px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Cor do texto*/
   color: #111
 }
 
 .content-page-admin .title a {
-  background: #6558C3;
+  /*Cor de fundo*/
+  background: var(--purple);
+  /*Preenchimento de 9 no topo e fundo e 20 nas laterais*/
   padding: 9px 20px;
+  /*Cor do texto*/
   color: #fff;
+  /*Tamanho da fonte*/
   font-size: 16px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Arredondamento dos cantos*/
   border-radius: 4px;
+  /*Retira o sublinhado*/
   text-decoration: none;
 }
 
 .content-page-admin .recipes-admin {
+  /*Display em grade para apresentação das receitas na rota "index"*/
   display: grid;
+  /*duas colunas de receits de tamanho igual*/
   grid-template-columns: 1fr 1fr;
 }
 
-.content-page-admin .recipe-admin {
+.content-page-admin .recipes-admin .recipe-admin {
+  /*Display flexivel para que os textos fiquem ao lado da foto da rececita*/
   display: flex;
+  /*Margem de fundo*/
   margin-bottom: 20px;
 }
 
 .content-page-admin img {
+  /*Largura da imagem*/
   width: 172px;
+  /*Altura da imagem*/
   height: 80px;
+  /*Arredondamento dos cantos*/
   border-radius: 8.57px;
+  /*Margem direita*/
   margin-right: 20px;
 }
 
 .content-page-admin .texts .name {
+  /*Tamanho da fonte*/
   font-size: 18px;
+  /*Cor da texto*/
   color: #111;
+  /*Margem do fundo*/
   margin-bottom: 5px;
 }
 
 .content-page-admin .texts .author {
+  /*Tamanho da fonte*/
   font-size: 14px;
+  /*Cor da texto*/
   color: #777;
+  /*Margem do fundo*/
   margin-bottom: 10px;
 }
 
 .content-page-admin .texts a {
+  /*Remove o sublinhado*/
   text-decoration: none;
+  /*Tamanho da fonte*/
   font-size: 14px;
-  color: #6558C3;
+  /*Cor do texto*/
+  color: var(--purple);
+  /*Peso da fonte - negrito*/
   font-weight: bold;
 }
 
 /*página show*/
 .recipes_details_admin .init {
+  /*Display flexivel, posição dos elementos padrão, na mesma linha*/
   display: flex;
+  /*Alinhamento central no eixo x*/
   align-items: center;
+  /*Cada elemento com espaço total entre eles, como só há dois elementos, cada
+  um esta num extremo do elemento pai*/
   justify-content: space-between;
+  /*Margem de 50 no topo, 0 nas laterais e 20 no fundo*/
   margin: 50px 0 20px;
 }
 
 .recipes_details_admin .init h2 {
+  /*Tamanho da fonte*/
   font-size: 24px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Cor do texto*/
   color: #111
 }
 
 .recipes_details_admin .init a {
-  background: #6558C3;
+  /*Cor de fundo*/
+  background: var(--purple);
+  /*Preenchimento de 9 no topo e fundo e 20 nas laterais*/
   padding: 9px 20px;
+  /*Cor do texto*/
   color: #fff;
+  /*Tamanho da fonte*/
   font-size: 16px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Arredondamento das bordas*/
   border-radius: 4px;
+  /*Retira o sublinhado*/
   text-decoration: none;
 }
 
-.recipes_details_admin .cover {
+.recipes_details_admin img {
+  /*Largura total da imagem em relação ao elemento pai*/
   width: 100%;
+  /*Altura da imagem*/
   height: 280px;
+  /*Arredondamento das bordas*/
   border-radius: 15px;
+  /*Margem do fundo*/
   margin-bottom: 50px;
+  /*Imagem com proporsão original, cortando-a por causa da nova altura*/
   object-fit: cover;
 }
 
 .recipes_details_admin .texts_center {
+  /*Textos alinhados ao centro*/
   text-align: center;
 }
 
 .recipes_details_admin .texts_center h1 {
+  /*Tamanho da fonte*/
   font-size: 36px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Cor do texto*/
   color: #111;
+  /*Margem do fundo*/
   margin-bottom: 4px;
 }
 
 .recipes_details_admin .texts_center p {
+  /*Tamanho da fonte*/
   font-size: 20px;
+  /*Cor do texto*/
   color: #777;
+  /*Margem do fundo*/
   margin-bottom: 31px;
 }
 
 .recipes_details_admin .title-details {
+  /*Tamanho da fonte*/
   font-size: 24px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Cor do texto*/
   color: #111;
+  /*Margem do fundo*/
   margin-bottom: 19px;
 }
 
 .recipes_details_admin .ingredients,
-.recipes_details_admin .steps {
+.recipes_details_admin .steps,
+.recipes_details_admin .information {
+  /*Tamanho da fonte*/
   font-size: 18px;
+  /*Espaçamento entre linhas*/
   line-height: 28px;
+  /*Cor do texto*/
   color: #444;
+  /*Margem do fundo*/
   margin-bottom: 41px;
 }
 
 .recipes_details_admin .information {
-  font-size: 18px;
-  line-height: 28px;
-  color: #444;
+  /*Margem do fundo*/
+  margin-bottom: 0; 
 }
 
 .content-page-admin .forms {
+  /*Posição relativa, estratégia para posicionamento do botão delete*/
   position: relative;
+  /*Margem do topo*/
   margin-top: 50px;
 }
 
 .content-page-admin .title-edit {
+  /*Display flexivel, seguindo o padrão com os elementos na mesma linha*/
   display: flex;
+  /*Alinhamento central no eixo x*/
   align-items: center;
+  /*Cada elemento com espaço total entre eles, como só há dois elementos, cada
+  um esta num extremo do elemento pai*/
   justify-content: space-between;
+  /*Margem do fundo*/
   margin-bottom: 26px;
 }
 
+form .save,
 form .delete{
+  /*Preenchimento de 9 no topo e fundo e 20 nas laterais*/
   padding: 9px 20px;
-  background: #DC4747;
+  /*Tamanho da fonte*/
   font-size: 16px;
+  /*Cor do texto*/
   color: #fff;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
+  /*Arreddondamento dos cantos*/
   border-radius: 4px;
+  /*Cursor tipo ponteiro*/
   cursor: pointer;
-  position: absolute;
-  right: 165px;
 }
 
 form .save{
-  padding: 9px 20px;
-  background: #6558C3;
-  font-size: 16px;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
+  /*Cor de fundo*/
+  background: var(--purple);
+}
+
+form .delete {
+  /*Cor de fundo*/
+  background: #DC4747;
+  /*Posição absoluta em relação ao pai*/
+  position: absolute;
+  /*165px de distancia da direita, estrategia para posicionar o botão ao lado do de salvar receita*/
+  right: 165px;
 }
 
 form .item {
+  /*Margem do fundo*/
   margin-bottom: 30px;
 }
 
 form .item div {
+  /*Tamanho da fonte*/
   font-size: 16px;
+  /*Peso da fonte - ngrito*/
   font-weight: bold;
+  /*Cor do texto*/
   color: #111;
 }
 
 form .item input {
+  /*Largura total em relação ao elemento pai*/
   width: 100%;
+  /*Altura*/
   height: 49px;
+  /*Cor de fundo*/
   background: #fff;
+  /*Borda de 1px solida com cor*/
   border: 1px solid #ddd;
+  /*Arredondamento dos cantos*/
   border-radius: 4px;
+  /*tamanho da fonte*/
   font-size: 15px;
+  /*Preenchiemnto de 0 no topo e fundo e 20 nas laterias*/
   padding: 0 20px;
-  margin-top: 10px;
+  /*Estratétia para o padding não ultrpassar os limites de largura do elemento pai*/
   box-sizing: border-box;
+  /*Margem do topo*/
+  margin-top: 10px;
 }
 
 form .item button {
+  /*Cor de fundo*/
   background: #fff;
+  /*Tamanho da fonte*/
   font-size: 16px;
+  /*Peso da fonte - negrito*/
   font-weight: bold;
-  color: #6558C3;
+  /*Cor do texto*/
+  color: var(--purple);
+  /*Margem do topo*/
   margin-top: 15px;
+  /*Cursor tipo ponteiro*/
   cursor: pointer;
+  /*Remove a borda de quando o botão é clicado*/
   outline: 0;
 }
 
 form .item textarea {
+  /*Largura total em relação ao elemento pai*/
   width: 100%;
+  /*Altura*/
   height: 257px;
+  /*Borda de 1px solida com cor*/
   border: 1px solid #ddd;
+  /*Cor de fundo*/
   background: #fff;
+  /*Arredondamento dos cantos*/
   border-radius: 4px;
+  /*Preenchimento de 18 no topo e fundo e 20 nas laterais*/
   padding: 18px 20px;
+  /*Tamanho da fonte*/
   font-size: 15px;
+  /*Familia de fontes*/
   font-family: 'Roboto', sans-serif;
+  /*Margem do topo*/
   margin-top: 10px;
+  /*Estratétia para o padding não ultrpassar os limites de largura do elemento pai*/
   box-sizing: border-box;
 }
