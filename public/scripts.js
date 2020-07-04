@@ -16,9 +16,9 @@ for(let recipe of recipes) {
 // === Página de detalhes da receita ===
 //Guarda num array todos os campos com as classes solicitadas
 const hide = [
-  document.querySelector('.hide1'), 
-  document.querySelector('.hide2'),
-  document.querySelector('.hide3')
+  document.querySelector('#hide1'), 
+  document.querySelector('#hide2'),
+  document.querySelector('#hide3')
 ];
 
 //Guarda num array todos os campos com as classes solicitadas
@@ -36,17 +36,18 @@ if(hide[0]){
     //Fica ouvindo o click nos elementos dentro do hide
     hide[i].addEventListener('click', function() {
       //Se a classe maximize ja existir na posição do array "maximize"
-      if(maximize[i].classList.contains('maximize')) 
+      if(maximize[i].classList.contains('maximize')) {
         //A classe é removida
         maximize[i].classList.remove('maximize');
-      else
+        document.getElementById(hide[i].id).innerHTML="ESCONDER";
+      } else {
         //Se não ela é adicionada
         maximize[i].classList.add('maximize');
-      
+        document.getElementById(hide[i].id).innerHTML="MOSTRAR";
+      }
     });
   }
 }
-
 
 // === Página de criação de receita ===
 //Novo ingrediente ===
@@ -105,7 +106,7 @@ if(preparation)
 
 
 
-// === Confiormação de delete ===
+// === Confirmação de delete ===
 //Guarda todo o form-delete na variavel formDelete
 const formDelete = document.querySelector('#form-delete')
 //Quando for gerado um evento de submit dentro do form-delete ele entra na function
@@ -116,4 +117,60 @@ if(formDelete){
     //Se a confirmação for cancelada ele interrompe o submit do botão deletar
     if(!confirmation) event.preventDefault()
   })
+}
+
+// === Cor do menu na página atual - Admin ===
+//location vem do obejto global window, assim como document, por isso posso usa-lo direto
+//Será guardado na variável currentPage a rota selecionada, /instructors ou /members
+const currentPage = location.pathname;
+//Guarda na variável menuItems os links do menu
+const menuItems = document.querySelectorAll('.content-admin .header .links-admin a');
+
+//Percorre os items do menu
+for(item of menuItems) {
+  /*Caso dentro do currentPage tenha alguma string que seja igual ao href de algum dos links,
+  ele entra no if */
+  if(currentPage.includes(item.getAttribute('href'))) {
+    //Adiciona a classe active ao a do menu
+    item.classList.add('active');
+  }
+}
+
+// === Cor do menu na página atual - Site ===
+//location vem do obejto global window, assim como document, por isso posso usa-lo direto
+//Será guardado na variável currentPage a rota selecionada, /instructors ou /members
+const currentPageSite = location.pathname;
+//Guarda na variável menuItems os links do menu
+const menuItemsSite = document.querySelectorAll('.content-page header .links a');
+
+//Percorre os items do menu
+for(item of menuItemsSite) {
+  /*Caso dentro do currentPage tenha alguma string que seja igual ao href de algum dos links,
+  ele entra no if */
+  if(currentPageSite.includes(item.getAttribute('href'))) {
+    //Adiciona a classe active ao a do menu
+    item.classList.add('active-site');
+  }
+}
+
+// === Valida campos Forms ===
+const validation = document.querySelector('.validation')
+if(validation){
+  validation.addEventListener('submit', function(event) {
+    const inputs = document.querySelectorAll('.input')
+
+    for(let i = 0; i < inputs.length; i++) {
+      const x = document.getElementById(`empty${i}`)
+      if(x) x.remove();
+    }
+
+    for(let i = 0; i < inputs.length; i++) {
+      if(inputs[i].value == '') {
+        const items = document.querySelectorAll('.inputs');
+        items[i].innerHTML += `<p class="empty" id="empty${i}">* Campo obrigatório!</p>`
+        items[i].children[1].value = '';
+        event.preventDefault();
+      }
+    }
+  });
 }

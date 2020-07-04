@@ -11,13 +11,13 @@
 
   <div class="recipes-admin">
 
-    {% for item in items %}
+    {% for recipe in recipes %}
       <div class="recipe-admin">
-        <img src="../assets/{{item.image}}" alt="burger">
+        <img src="../assets/{{recipe.image}}" alt="burger">
         <div class="texts">
-          <p class="name">{{item.title}}</p>
-          <p class="author">{{item.author}}</p>
-          <a href="/admin/recipes/{{item.id}}">Visualizar</a>
+          <p class="name">{{recipe.title}}</p>
+          <p class="author">por {{recipe.author}}</p>
+          <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
         </div>
       </div>
     {% endfor %}

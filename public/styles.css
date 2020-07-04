@@ -52,6 +52,7 @@ body {
   margin-top: 36.1px;
   /*Margem entre o cabeçalho e o conteudo do html*/
   margin-bottom: 30px;
+  position: relative;
 }
 
 .links {
@@ -66,6 +67,39 @@ body {
   text-decoration: none;
   /*Cor do texto dos links do menu*/
   color: #111111
+}
+
+.links a.active-site {
+  font-weight: bold;
+}
+
+.content-page form {
+  position: absolute;
+  right: 0;
+}
+
+.content-page form input {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding: 0 15px;
+  width: 216px;
+  height: 35px;
+  margin-right: 8px;
+  color: #999;
+  font-size: 14px;
+}
+
+.content-page form button {
+  background: var(--purple);
+  width: 91px;
+  height: 37px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  outline: 0;
 }
 
 footer {
@@ -319,24 +353,74 @@ footer {
   line-height: 28px;
 }
 
-/* === ADMIN === */
-/* página index*/
-.header-admin {
-  /*Altura do cabeçalho Admin*/
-  height: 80px;
-  /*Cor de fundo*/
-  background: #111;
+.chefs_page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px 25px;
+  margin-top: 20px
 }
 
-.header-admin header {
-  /*Largura do espaço utilizavel do cabeçalho*/
-  width: 940px;
-  /*Display flexivel*/
+.chefs_page .chef {
   display: flex;
-  /*Direção do display em colunas*/
+  align-items: center;
+}
+
+.chefs_page .chef img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.chefs_page .chef .name {
+  font-size: 18px;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.chefs_page .chef .total_recipes {
+  font-size: 14px;
+  color: #666;
+}
+
+/* === ADMIN === */
+/* página index*/
+.content-admin {
+  width: 100%;
+  display: flex;
   flex-direction: column;
-  /*Margem no topo em 0, nas laterais automatico e entre o cabeçalho e o conteúdo 50px*/
   margin: 0 auto 50px;
+}
+.content-admin header {
+  width: 100%;
+  height: 80px;
+  background-color: #111;
+}
+
+.content-admin .header {
+  /*Display flexivel*/
+  width: 940px;
+  display: flex;
+  align-items: center;
+  margin: 27px auto 26.1px;
+}
+
+.content-admin .links-admin {
+  margin-left: 50.4px;
+}
+
+.content-admin .links-admin a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #999;
+  text-align: left;
+  margin-right: 30px;
+  font-weight: bold;
+}
+
+.content-admin .links-admin a.active {
+  color: #fff;
 }
 
 .header-admin header a {
@@ -346,6 +430,10 @@ footer {
   width: 90.6px;
   /*Altura*/
   height: 26.9px;
+}
+
+.content-page-admin {
+  width: 940px;
 }
 
 .content-page-admin .title {
@@ -358,6 +446,10 @@ footer {
   /*Cada elemento com espaço total entre eles, como só há dois elementos, cada
   um esta num extremo do elemento pai*/
   justify-content: space-between;
+}
+
+.content-page-admin .chefs {
+  margin-bottom: 10px;
 }
 
 .content-page-admin .title h2 {
@@ -609,7 +701,8 @@ form .item div {
   color: #111;
 }
 
-form .item input {
+form .item input,
+form .item select {
   /*Largura total em relação ao elemento pai*/
   width: 100%;
   /*Altura*/
@@ -668,4 +761,58 @@ form .item textarea {
   margin-top: 10px;
   /*Estratétia para o padding não ultrpassar os limites de largura do elemento pai*/
   box-sizing: border-box;
+}
+
+.content-page-admin .admin .chef p {
+  margin-bottom: 10px;
+}
+
+.content-page-admin .admin .chef a {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--purple);
+  text-decoration: none;
+}
+
+.content-page-admin .admin {
+  margin-top: 20px;
+}
+
+.chefs-details .info {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.chefs-details .info img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0;
+  object-fit: cover;
+}
+
+.chefs-details .info h2 {
+  margin-top: 30px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.chefs-details .info p {
+  margin-top: 4px;
+  font-size: 20px;
+  color: #777;
+}
+
+.chefs-details h3 {
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chefs-details .recipes-admin {
+  margin-top: 30px;
+}
+
+.empty {
+  color: red;
 }

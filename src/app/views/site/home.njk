@@ -1,5 +1,5 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
-{% extends "clients/layout.njk" %}
+{% extends "site/layout.njk" %}
 
 <!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
 {% block content %}
@@ -28,15 +28,12 @@
     <div class="recipes">
 
       <!-- Laço para construção das receitas baseado no array data.js -->
-      {% for item in items %}
-        <!-- Caso o item seja accessed igual a true ele é mostrado na home -->
-        {%if item.accessed%}
-          <div id="{{item.id}}" class="recipe">
-            <img src="assets/{{item.image}}" alt="{{item.title}}">
-            <p class="name">{{item.title}}</p>
-            <p class="author">{{item.author}}</p>
-          </div>
-        {% endif %}
+      {% for recipe in recipes %}
+        <div id="{{recipe.id}}" class="recipe">
+          <img src="assets/{{recipe.image}}" alt="{{recipe.title}}">
+          <p class="name">{{recipe.title}}</p>
+          <p class="author">{{recipe.author}}</p>
+        </div>
       {% endfor %}
           
     </div>

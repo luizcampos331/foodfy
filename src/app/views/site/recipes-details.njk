@@ -1,5 +1,5 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
-{% extends "clients/layout.njk" %}
+{% extends "site/layout.njk" %}
     
 <!-- Conteúdo do bloco head irá substituir o head no layout.njk -->
 {% block head %}
@@ -14,21 +14,21 @@
 {% block content %}
 
   <div class="recipes_details_page">
-    <img src="/assets/{{ item.image }}" alt="{{ item.title }}">
+    <img src="/assets/{{ recipe.image }}" alt="{{ recipe.title }}">
 
     <div class="texts_center">
-      <h1>{{item.title}}</h1>
-      <p>{{item.author}}</p>
+      <h1>{{recipe.title}}</h1>
+      <p>{{recipe.author}}</p>
     </div>
 
     <div>
       <div class="title">
         <h3>Ingredientes</h3>
-        <p class="hide1">ESCONDER</p>
+        <p id="hide1">MOSTRAR</p>
       </div>
-      <div class="ingredients">
+      <div class="ingredients maximize">
         <ul>
-          {% for ingredients in item.ingredients %}
+          {% for ingredients in recipe.ingredients %}
             <li>{{ingredients}}</li>
           {% endfor %}
         </ul>
@@ -38,11 +38,11 @@
     <div>
       <div class="title">
         <h3>Modo de preparo</h3>
-        <p class="hide2">ESCONDER</p>
+        <p id="hide2">MOSTRAR</p>
       </div>
-      <div class="steps">
+      <div class="steps maximize">
         <ul>
-          {% for steps in item.preparation %}
+          {% for steps in recipe.preparation %}
             <li>{{steps}}</li>
           {% endfor%}
         </ul>
@@ -52,9 +52,9 @@
     <div>
       <div class="title">
         <h3>Informações adicionais</h3>
-        <p class="hide3">ESCONDER</p>
+        <p id="hide3">MOSTRAR</p>
       </div>
-      <p class="information">{{item.information}}</p>
+      <p class="information maximize">{{recipe.information}}</p>
     </div>
   </div>
 

@@ -3,39 +3,36 @@
   <head>
     <!-- Conteúdo será substituido caso o bloco head seja encontrado em outros arquivos -->
     {% block head %}
-      <title>Foodfy</title>
+      <title>Foodfy - Admin</title>
     {% endblock %}
 
     <link rel="stylesheet" href="/styles.css">
   </head>
 
-  <body>
-
-    <div class="content-page">
-
-      <header>
+  <body class="content-admin">
+    <header>
+      <div class="header">
         <div class="logo">
-          <a href="/">
+          <a href="/admin/recipes">
             {% block logo %}
-              <img src="assets/logo.png" alt="Foodfy">
+              <img src="../assets/logo-branca.png" alt="Foodfy">
             {% endblock %}
           </a>
         </div>
 
-        <div class="links">
-          <a href="/sobre">Sobre</a>
-          <a href="/receitas">Receitas</a>
+        <div class="links-admin">
+          <a href="/admin/recipes">Receitas</a>
+          <a href="/admin/chefs">Chefs</a>
         </div>
-      </header>
+      </div>
+    </header>
+
+    <div class="content-page-admin">
 
       {% block content %}
       {% endblock %}
 
     </div>
-
-    <footer>
-      <p>Todos os direitos reservados, receitas Foodfy</p>
-    </footer>
     
     <script src="/scripts.js"></script>
   </body>

@@ -1,0 +1,22 @@
+ <!-- Extendendo as partes repetidas para o layout.njk -->
+{% extends "admin/layout.njk" %}
+
+{% block logo%}
+  <img src="../../assets/logo-branca.png" alt="Foodfy">
+{% endblock %}
+
+<!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
+{% block content %}
+
+  <form class="validation" action="/admin/chefs" method="POST">
+
+    <div class="title chefs">
+      <h2>Criando chef</h2>
+      <button class="save" type="submit">Salvar chef</button>
+    </div>
+
+    {% include 'admin/chefs/fields.njk'%}
+
+  </form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+ <!-- Extendendo as partes repetidas para o layout.njk -->
+{% extends "site/layout.njk" %}
+    
+<!-- Conteúdo do bloco head irá substituir o head no layout.njk -->
+{% block head %}
+  <title>Chefs - Foodfy</title>
+{% endblock %}
+
+<!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
+{% block content %}
+
+  <div class="chefs_page">
+
+    <!-- Laço para construção das receitas baseado no array data.js -->
+    {%for chef in chefs %}
+      <div id="{{chef.id}}" class="chef">
+        <img src="{{chef.avatar_url}}" alt="Foto de {{chef.name}}">
+        <div class="infos">
+          <p class="name">{{chef.name}}</p>
+          <p class="total_recipes">
+            {{chef.total_recipes}}
+            {% if chef.total_recipes == '1'%} receita{% else %} receitas{% endif %}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
