@@ -73,8 +73,9 @@ module.exports = {
 
     //Query completa
     query = `
-      SELECT *, ${totalQuery}
+      SELECT rep.*, ${totalQuery}, che.name as author
       FROM recipes rep
+      LEFT JOIN chefs che ON rep.chef_id = che.id
       ${filterQuery}
       ORDER BY rep.title LIMIT $1 OFFSET $2
     `;

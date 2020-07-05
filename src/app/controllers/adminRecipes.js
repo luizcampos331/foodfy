@@ -42,6 +42,11 @@ module.exports = {
 
   // === Método Show - Visualizar página ===
   show(req, res) {
+    if(isNaN(parseInt(req.params.id, 10)))
+    {
+      return res.status(404).render("admin/not-found");
+    }
+
     Recipe.find(req.params.id, function(recipe) {
       /*Retornando página de detalhes de uma receita renderizada, passado dados
       somente da receita correta, atravez de sua posição no array de dados*/
@@ -51,6 +56,11 @@ module.exports = {
 
   // === Método Edit - Visualizar página ===
   edit(req, res) {
+    if(isNaN(parseInt(req.params.id, 10)))
+    {
+      return res.status(404).render("admin/not-found");
+    }
+    
     Recipe.find(req.params.id, function(recipe) {
       if(!recipe) return res.send('Recipe not found');
 

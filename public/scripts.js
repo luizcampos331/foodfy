@@ -174,3 +174,84 @@ if(validation){
     }
   });
 }
+
+// === Paginação ===
+function paginate(selectedPage, totalPages) {
+  let pages = [],
+      oldPage
+
+  for(let currentPage = 1; currentPage <= totalPages; currentPage++) {
+    const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
+    const pagesAfterSelectedPage = currentPage <= selectedPage + 2;
+    const pagesBeforeSelectedPage = currentPage >= selectedPage -2;
+
+    if(firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage) {
+      if(oldPage && currentPage - oldPage > 2) {
+        pages.push('...');
+      }
+
+      if(oldPage && currentPage - oldPage == 2) {
+        pages.push(oldPage + 1);
+      }
+
+      pages.push(currentPage);
+
+      oldPage = currentPage;
+    }
+  }
+
+  return pages
+}
+
+function createPagination(pagination) {
+  //Pega o valor de filter
+  const filter = pagination.dataset.filter;
+  //Pega o valor de page
+  const page = +pagination.dataset.page;
+  //Pega o valor de total
+  const total = +pagination.dataset.total;
+  //Recebe a paginação na variável pages
+  const pages = paginate(page, total);
+
+  let elements = '';
+
+  console.log(filter);
+
+
+  //Caso tenha mais de uma página
+  if(pages.length > 1) {
+    //Percorre todas as posições de pages
+    for(let page of pages) {
+      //Caso o page inclua os pontos ...
+      if(String(page).includes('...')){
+        //Variável recebe SPAN
+        elements += `<span>${page}</span>`;
+      } else {
+        if(filter) {
+          elements += `<a href="?page=${page}&filter=${filter}">${page}</a>`;
+        }
+        else {
+          elements += `<a href="?page=${page}">${page}</a>`;
+        }
+      }
+    }
+    //Caso seja somente uma página
+  } else {
+    if(filter) {
+      elements += `<a href="?page=${pages}&filter=${filter}">${page}</a>`;
+    }
+    else {
+      elements += `<a href="?page=${pages}">${pages}</a>`;
+    }
+  }
+
+  //Adiciona ao HTML
+  pagination.innerHTML = elements
+}
+
+//Guarda div de paginação
+const pagination = document.querySelector('.pagination');
+
+if(pagination) {
+  createPagination(pagination);
+}

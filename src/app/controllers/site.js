@@ -22,7 +22,7 @@ module.exports = {
     //page recebe ele mesmo ou 1 caso ele esteja vazio
     page = page || 1;
     //limit recebe ele mesmo ou 2 caso ele esteja vazio
-    limit = limit || 2;
+    limit = limit || 3;
     //Tendo os valores padrões acima, offset recebe 2 * (1 - 1) = 0
     let offset = limit * (page - 1);
 
@@ -47,12 +47,6 @@ module.exports = {
 
     // Inicia o paginate passado o objeto params como parametro
     Site.paginate(params);
-
-
-    /*Site.allRecipes(function(recipes) {
-      //Retornando a página index renderizada
-      return res.render('site/recipes', { recipes })
-    })*/
   },
 
   // Método GET para ágina recipes-details

@@ -43,6 +43,28 @@ body {
   margin: 0 auto 50px;
 }
 
+.pagination {
+  position: absolute;
+  display: flex;
+  width: 940px;
+  align-items: center;
+  justify-content: center;
+  bottom: 72px;
+}
+
+.pagination a,
+.pagination span {
+  color: var(--purple);
+  text-decoration: none;
+  margin-right: 16px;
+  font-weight: bold;
+}
+
+.pagination a:hover {
+  filter: brightness(0.3);
+  border-bottom: 1px solid var(--purple);
+}
+
 .content-page header {
   /*Display flexivel, por padrão a direção do display fica em linha*/
   display: flex;
@@ -815,4 +837,45 @@ form .item textarea {
 
 .empty {
   color: red;
+}
+
+.not-result {
+  color: var(--purple);
+  font-size: 17px;
+}
+
+.error {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.error h1 {
+  color: var(--purple);
+  font-weight: bold;
+  font-size: 80px;
+}
+
+.error h3 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.error .links-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.error .links-not-found a {
+  text-decoration: none;
+  color: var(--purple);
+  transition: 200ms;
+}
+
+.error .links-not-found a:hover {
+  border-bottom: 1px solid;
+  margin: 5px;
 }

@@ -29,6 +29,11 @@ module.exports = {
   },
 
   show(req, res) {
+    if(isNaN(parseInt(req.params.id, 10)))
+    {
+      return res.status(404).render("admin/not-found");
+    }
+
     Chef.find(req.params.id, function(chef) {
       
       Chef.findRecipes(req.params.id, function(recipes) {
@@ -38,6 +43,11 @@ module.exports = {
   },
 
   edit(req, res) {
+    if(isNaN(parseInt(req.params.id, 10)))
+    {
+      return res.status(404).render("admin/not-found");
+    }
+    
     Chef.find(req.params.id, function(chef) {
       if(!chef) return res.send('Chef not found');
       /*Retornando página de edição de uma receita renderizada, passado dados

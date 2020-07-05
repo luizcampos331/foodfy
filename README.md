@@ -15,7 +15,7 @@
 
 ## :bookmark: Sobre
 Site para visualização de receitas culinárias. </br>
-Conta com área administrativa para gerenciar as receitas. </br>
+Conta com área administrativa para gerenciar as receitas e os chefs responsáveis.</br>
 Ainda em desenvolvimento...
 
 ## :computer: Tecnologias Utilizadas
@@ -28,8 +28,10 @@ Ainda em desenvolvimento...
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
-- Visualização de receitas culinárias
+- Visualização de receitas culinárias e os chefs
 - Cadastro, edição e exclusão de receitas culinárias
+- Cadastro, edição e exclusão de chefs
+- Vinculo de receitas com chefs
 
 ## :package: Como Baixar o projeto
 Pelo seu terminal, escolha um local para o projeto e rode os comandos:

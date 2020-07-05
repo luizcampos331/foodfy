@@ -11,15 +11,26 @@
 
   <div class="recipes_page">
 
-    <!-- Laço para construção das receitas baseado no array data.js -->
-    {% for recipe in recipes %}
-      <div id="{{recipe.id}}" class="recipe">
-        <img src="assets/{{recipe.image}}" alt="{{recipe.title}}">
-        <p class="name">{{recipe.title}}</p>
-        <p class="author">{{recipe.author}}</p>
-      </div>
-    {% endfor %}
+    {% if recipes[0] %}
+      <!-- Laço para construção das receitas baseado no array data.js -->
+      {% for recipe in recipes %}
+        <div id="{{recipe.id}}" class="recipe">
+          <img src="assets/{{recipe.image}}" alt="{{recipe.title}}">
+          <p class="name">{{recipe.title}}</p>
+          <p class="author">{{recipe.author}}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="not-result" >Nenhum resultado encontrado!</p>
+    {% endif %}
 
   </div>
+
+  <div 
+    class="pagination"
+    data-page={{pagination.page}}
+    data-total={{pagination.total}}
+    data-filter={{filter}}
+  ></div>
 
 {% endblock %}

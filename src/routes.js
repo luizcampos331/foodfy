@@ -54,7 +54,12 @@ routes.delete('/admin/chefs', adminChefs.delete);
 // REDIRECT
 routes.get('/admin', function(req, res) {
   res.redirect('admin/recipes')
-})
+});
+
+//Caso nenhuma rota seja encontrada
+routes.use(function(req, res) {
+  res.status(404).render("site/not-found");
+});
 
 //Exportando a variável routes
 module.exports = routes;
