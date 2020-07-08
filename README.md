@@ -39,7 +39,7 @@ BANCO DE DADOS
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
-- Visualização de receitas culinárias e os chefs que a criaram
+- Visualização de receitas culinárias e os chefs que as criaram
 - Cadastro, listagem, edição e exclusão de receitas culinárias
 - Cadastro, listagem, edição e exclusão de chefs
 - Vinculo de receitas com chefs
