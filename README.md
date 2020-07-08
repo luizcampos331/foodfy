@@ -61,4 +61,4 @@ Github: <a href="https://www.github.com/luizcampos331">@luizcampos331</a>
 
 ## :pencil: Licença
 Copyright © 2020 <a href="https://www.github.com/luizcampos331">Luiz Campos</a></br>
-Este projeto é licenciado pelo <a href="LICENCE">MIT</a>
+Este projeto é licenciado pelo <a href="LICENSE">MIT</a>
