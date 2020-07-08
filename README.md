@@ -22,18 +22,26 @@ Conta com área administrativa para gerenciar as receitas e os chefs responsáve
 Ainda em desenvolvimento...
 
 ## :computer: Tecnologias Utilizadas
+FRONT-END:
 - HTML
 - CSS
+- Nunjucks
 - JavaScript
+- Method Override
+
+BACK-END
 - NodeJS
 - Express
-- Nunjucks
+- JavaScript
+
+BANCO DE DADOS
+- PostgreSQL
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
-- Visualização de receitas culinárias e os chefs
-- Cadastro, edição e exclusão de receitas culinárias
-- Cadastro, edição e exclusão de chefs
+- Visualização de receitas culinárias e os chefs que a criaram
+- Cadastro, listagem, edição e exclusão de receitas culinárias
+- Cadastro, listagem, edição e exclusão de chefs
 - Vinculo de receitas com chefs
 
 ## :package: Como Baixar o projeto
@@ -51,7 +59,7 @@ Pelo seu terminal, escolha um local para o projeto e rode os comandos:
 ```
 
 ## :gear: Requisitos:
-- Editor de códido (recomendo o Visual Studio Code: https://code.visualstudio.com/)
+- Editor de código (recomendo o Visual Studio Code: https://code.visualstudio.com/)
 - Node JS (https://nodejs.org/en/)
 
 ## :bust_in_silhouette: Autor:
