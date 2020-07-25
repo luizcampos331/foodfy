@@ -23,13 +23,11 @@ Gerenciamento de upload de imagens das receitas e dos chefs</br>
 Ainda em desenvolvimento...
 
 ## :computer: Tecnologias Utilizadas
-<<<<<<< HEAD
 Front-End:
 - HTML
 - CSS
 - Nunjucks
 - JavaScript
-<<<<<<< HEAD
 
 Back-End:
 - NodeJS
