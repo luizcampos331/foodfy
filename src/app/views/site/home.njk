@@ -30,7 +30,7 @@
       <!-- Laço para construção das receitas baseado no array data.js -->
       {% for recipe in recipes %}
         <div id="{{recipe.id}}" class="recipe">
-          <img src="assets/{{recipe.image}}" alt="{{recipe.title}}">
+          <img src="{{recipe.path}}" alt="{{recipe.title}}">
           <p class="name">{{recipe.title}}</p>
           <p class="author">{{recipe.author}}</p>
         </div>

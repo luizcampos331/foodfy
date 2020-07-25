@@ -14,7 +14,7 @@
     <!-- Laço para construção das receitas baseado no array data.js -->
     {%for chef in chefs %}
       <div id="{{chef.id}}" class="chef">
-        <img src="{{chef.avatar_url}}" alt="Foto de {{chef.name}}">
+        <img src="{{chef.path}}" alt="Foto de {{chef.name}}">
         <div class="infos">
           <p class="name">{{chef.name}}</p>
           <p class="total_recipes">

@@ -554,7 +554,7 @@ footer {
   font-weight: bold;
 }
 
-/*página show*/
+/*=== Página show ===*/
 .recipes_details_admin .init {
   /*Display flexivel, posição dos elementos padrão, na mesma linha*/
   display: flex;
@@ -593,19 +593,125 @@ footer {
   text-decoration: none;
 }
 
-.recipes_details_admin img {
-  /*Largura total da imagem em relação ao elemento pai*/
+/* Imagens */
+.gallery {
+  /*Largura total em relação ao elemento pai*/
   width: 100%;
-  /*Altura da imagem*/
+  /*Altura*/
   height: 280px;
-  /*Arredondamento das bordas*/
-  border-radius: 15px;
+  /*Posição relativa para tratamento dos filhos com posição absuluta*/
+  position: relative;
   /*Margem do fundo*/
-  margin-bottom: 50px;
-  /*Imagem com proporsão original, cortando-a por causa da nova altura*/
-  object-fit: cover;
+  margin-bottom: 58px;
 }
 
+.gallery .highlight {
+  /*Largura total em relação ao elemento pai*/
+  width: 100%;
+  /*Altura total em relação ao elemento pai*/
+  height: 100%;
+  /*Margem do fundo*/
+  margin-bottom: 8px;
+}
+
+.gallery .highlight img {
+  /*Largura total da imagem em relação ao elemento pai*/
+  width: 100%;
+  /*Altura total da imagem em relação ao elemento pai*/
+  height: 100%;
+  /*Arredondamento das bordas*/
+  border-radius: 15px;
+  /*Imagem com proporsão original, cortando-a por causa da nova altura*/
+  object-fit: cover;
+  /*Posição no meio da imagem*/
+  object-position: 50% 50%;
+}
+
+.gallery .gallery-preview {
+  /*Display flexivel*/
+  display: flex;
+  /*Posição absoluta em relação ao elemento pai*/
+  position: absolute;
+  /*Colado a direita*/
+  right: 0;
+}
+
+.gallery .gallery-preview img {
+  /*Altua da miniatura*/
+  height: 50px;
+  /*Largura da miniatura*/
+  width: 50px;
+  /*Imagem com proporsão original*/
+  object-fit: cover;
+  /*Opacidade em 60%*/
+  opacity: 0.6;
+  /*Cursor de ponteiro*/
+  cursor: pointer;
+  /*10px de margem a esquerda e 0 no resto*/
+  margin: 0 0 0 10px;
+  /*Arredondamento das bordas*/
+  border-radius: 3.5px;
+  /*Cor e tamanho das bordas*/
+  border: 1px solid #ddd;
+  /*Transicão em 200ms*/
+  transition: 200ms;
+}
+
+.gallery .gallery-preview img:hover,
+.gallery .gallery-preview img.active {
+  /*Opacidade em 100%*/
+  opacity: 1;
+}
+
+.gallery .highlight .lightbox-target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  overflow: hidden;
+  z-index: 100;
+  top: -100%;
+  left: 0;
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+.gallery .highlight .lightbox-target img {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: white;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.gallery .highlight a.lightbox-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: -80px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 400ms;
+  cursor: pointer;
+}
+
+.gallery .highlight a.lightbox-close i {
+  font-size: 30px;
+  color: var(--secondary-color)
+}
+
+/* Infos */
 .recipes_details_admin .texts_center {
   /*Textos alinhados ao centro*/
   text-align: center;
@@ -679,10 +785,11 @@ footer {
   margin-bottom: 26px;
 }
 
+/*=== Páginas Create/Edit ===*/
 form .save,
 form .delete{
   /*Preenchimento de 9 no topo e fundo e 20 nas laterais*/
-  padding: 9px 20px;
+  padding: 9px 18px;
   /*Tamanho da fonte*/
   font-size: 16px;
   /*Cor do texto*/
@@ -695,7 +802,7 @@ form .delete{
   cursor: pointer;
 }
 
-form .save{
+form .save {
   /*Cor de fundo*/
   background: var(--purple);
 }
@@ -706,7 +813,11 @@ form .delete {
   /*Posição absoluta em relação ao pai*/
   position: absolute;
   /*165px de distancia da direita, estrategia para posicionar o botão ao lado do de salvar receita*/
-  right: 165px;
+  right: 150px;
+}
+
+form .delete.chef {
+  right: 131px;
 }
 
 form .item {
@@ -743,6 +854,142 @@ form .item select {
   box-sizing: border-box;
   /*Margem do topo*/
   margin-top: 10px;
+}
+
+form .item select {
+  /* Permitir estilização do select */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /*Imagem da seta e gradiente de cores*/
+  background-image: url(assets/seta.svg);
+  /*Imagem não repete*/
+  background-repeat: no-repeat;
+  /*Posição da imagem com com 0.7em da direita, 50% de espaço do topo, gradiente com 0 e 0*/
+  background-position: right .7em top 50%;
+  /*Tamanho da imagem com 0.65em em cima e em baixo e auto nas laterias, gradiente com 100%*/
+  background-size: .65em auto;
+}
+
+form .item .photos-list {
+  display: flex;
+  margin-top: 10.5px;
+}
+
+form .item #photos-upload {
+  position: relative;
+  margin-right: 10.5px;
+}
+
+form .item #photos-upload input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  width: 149px;
+  height: 149px;
+  opacity: 0;
+  /*tamanho da fonte em zero para o cursor pointer pegar em tudo*/
+  font-size: 0;
+  cursor: pointer;
+}
+
+form .item #photos-upload .photo-add {
+  width: 147px;
+  height: 147px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3.5px;
+}
+
+form .item #photos-upload .photo-add i {
+  font-size: 35px;
+  font-weight: bold;
+  color: #777;
+}
+
+form .item #photos-preview {
+  display: grid;
+  /*O mesmo que = 1fr 1fr 1fr*/
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 0 10.5px;
+  width: 100%;
+  height: 149px;
+}
+
+form .item #photos-preview .photo,
+form .item #photos-preview .avatar {
+  position: relative;
+}
+
+form .item #photos-preview .photo i,
+form .item #photos-preview .avatar i  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.8);
+  color: red;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 500%;
+  cursor: pointer;
+  transition: opacity 200ms;
+  opacity: 0;
+}
+
+form .item #photos-preview .photo i:hover,
+form .item #photos-preview .avatar i:hover {
+  opacity: 1;
+}
+
+form .item #photos-preview .photo img,
+form .item #photos-preview .avatar img {
+  width: 100%;
+  height: 149px;
+  object-fit: cover;
+  border-radius: 3.5px;
+}
+
+form .item #avatar-upload {
+  position: relative;
+  display: block;
+  /*Sem rolagem*/
+  overflow: hidden;
+  width: 139px;
+}
+
+form .item #avatar-upload p {
+  margin: 10px 0;
+  padding: 10.5px 0;
+  border-radius: 4px;
+  background-color: var(--purple);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+form .item #avatar-upload input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /*tamanho da fonte em zero para o cursor pointer pegar em tudo*/
+  font-size: 0;
+  cursor: pointer;
 }
 
 form .item button {
@@ -785,6 +1032,7 @@ form .item textarea {
   box-sizing: border-box;
 }
 
+/*=== Página Chefs ===*/
 .content-page-admin .admin .chef p {
   margin-bottom: 10px;
 }

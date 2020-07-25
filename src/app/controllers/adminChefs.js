@@ -1,87 +1,202 @@
 const Chef = require('../models/AdminChef');
+const File = require('../models/File');
 
 module.exports = {
-  index(req, res) {
-    Chef.all(function(chefs) {
-      return res.render('admin/chefs/index', { chefs });
-    })
+  async index(req, res) {
+    //await espera a resolução da Promise "Chef.all()", assim que recebe a resposta
+    //Caso tudo tenha dado certo, guarda o valor da resposta em "results"
+    let results = await Chef.all()
+    //Guarda em chef as linhas da resposta anterior, formando um array
+    const chefs = results.rows;
+
+    //For para percorrer as posição do array de "chefs"
+    for(chef of chefs) {
+      //Espera a resolução da promise e guarda o valor caso tenha dado certo
+      results = await Chef.files(chef.id);
+
+      //Percorre o array e adiciona um novo campo para cada posição
+      const files = results.rows.map(file => ({
+        //src receberá o caminho "URL" da imagem para ser apresentada
+        src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`,
+      }));
+
+      //Se tiver valor na primeira posição de files
+      if(files[0])
+        chef.path = files[0].src //Path é reescrito com o caminho da imagem
+    }
+
+    //Retorna a página de chefs renderizada com os valores
+    return res.render('admin/chefs/index', { chefs });
   },
 
   create(req, res) {
+    //Retorna a página de criação de chefs
     return res.render('admin/chefs/create');
   },
 
-  post(req, res) {
+  async post(req, res) {
     //Variável keys recebendo um array com todos os campos do formulário
     const keys = Object.keys(req.body);
 
-    //Percorrendo o array keys
+    //Percorrendo o array de keys
     for(let key of keys){
       //Verificando a existencia de valores em cada uma das chaves do req.body
-      if(req.body[key] == ""){
-        return 
-      }
+      if(req.body[key] == "")
+        return res.send('Please, fill all fields!');
     }
 
-    Chef.create(req.body, function(chef) {
-      return res.redirect(`/admin/chefs/${chef.id}`);
-    });
+    //Verifico se existe pelo menos uma imagem
+    if(req.files.length == 0) {
+      return res.send('Pelo menos uma foto!')
+    }
+
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    let results = await File.createChef(req.files);
+    //Guarda a primeira posição dos resultados em "avatar"
+    const avatar = results.rows[0];
+
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    results = await Chef.create(req.body, avatar.id)
+    //Guarda a primeira posição dos resultados em "chef"
+    const chef = results.rows[0];
+
+    //Redireciona para páfina de detalhes de chef
+    return res.redirect(`/admin/chefs/${chef.id}`);
   },
 
-  show(req, res) {
+  async show(req, res) {
+    //Verifica se o id é numérico
     if(isNaN(parseInt(req.params.id, 10)))
     {
+      //Caso não seja, renderiza a página de erro
       return res.status(404).render("admin/not-found");
     }
 
-    Chef.find(req.params.id, function(chef) {
-      
-      Chef.findRecipes(req.params.id, function(recipes) {
-        return res.render('admin/chefs/show', { chef, recipes })
-      });
-    });
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    let results = await Chef.find(req.params.id);
+    //Guarda a primeira posição dos resultados em "chef"
+    const chef = results.rows[0];
+
+    //Verifica se chef posui algum valor
+    if(!chef) return res.status(404).render("admin/not-found");
+
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    results = await Chef.files(chef.id);
+    //Percorre o array e adiciona um novo campo para cada posição
+    const files = results.rows.map(file => ({
+      //src receberá o caminho "URL" da imagem para ser apresentada
+      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`,
+    }));
+
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    results = await Chef.findRecipes(req.params.id);
+    //Guarda o array dos resultados em "recipes"
+    const recipes = results.rows;
+    
+    //Percorre o array de recipes
+    for(recipe of recipes) {
+      //Altera o path para o caminho "URL" da imagem
+      recipe.path = `${req.protocol}://${req.headers.host}${recipe.path.replace('public', '')}`;
+    }
+    
+    //Renderiza a página de petalhes do chef
+    return res.render('admin/chefs/show', { chef, recipes, files })
   },
 
-  edit(req, res) {
+  async edit(req, res) {
+    //Verifica se o id é numérico
     if(isNaN(parseInt(req.params.id, 10)))
     {
+      //Caso não seja, renderiza a página de erro
       return res.status(404).render("admin/not-found");
     }
     
-    Chef.find(req.params.id, function(chef) {
-      if(!chef) return res.send('Chef not found');
-      /*Retornando página de edição de uma receita renderizada, passado dados
-      somente da receita correta, atravez de sua posição no array de dados*/
-      return res.render('admin/chefs/edit', { chef })
-    });
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    let results = await Chef.find(req.params.id);
+    //Guarda a primeira posição dos resultados em "chef"
+    const chef = results.rows[0];
+
+    //Verifica se chef posui algum valor
+    if(!chef) return res.status(404).render("admin/not-found");
+
+    // GET Images
+    results = await Chef.files(chef.id);
+    const file = results.rows[0];
+    if(file)
+      file.path = `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`;
+
+    //Renderiza página de edição de chef
+    return res.render('admin/chefs/edit', { chef, file })
   },
 
-  put(req, res) {
+  async put(req, res) {
     //Variável keys recebendo um array com todos os campos do formulário
     const keys = Object.keys(req.body);
 
     //Percorrendo o array keys
     for(let key of keys){
       //Verificando a existencia de valores em cada uma das chaves do req.body
-      if(req.body[key] == ""){
+      if(req.body[key] == "" && key != "removed_files")
         return res.send('Please, fill all fields!');
-      }
     }
 
-    Chef.update(req.body, function(chef) {
-      return res.redirect(`/admin/chefs/${req.body.id}`);
-    });
+    //Verifica se existe alguma foto ja cadastrada ou para serem cadastrada
+    if(!req.body.photo_id && req.files.length == 0) 
+      return res.send('Uma foto pelo menos!');
+
+    //Verifica se existem imagens para serem cadastradas
+    if(req.files.length != 0) {
+      //Espera a resolução da promise e guarda o valor caso tenha dado certo
+      const results = await File.createChef(req.files);
+      //Guarda a primeira posição dos resultados em "avatar"
+      const avatar = results.rows[0];
+
+      //Espera a resolução da promise
+      await Chef.update(req.body, avatar.id);
+
+      //Verifico se o input removed_files existe
+      if(req.body.removed_files) {
+        //Cria um array separando as posições baseado nas virgulas
+        const removedFiles = req.body.removed_files.split(',');
+        
+        //Espera a resolução da promise
+        await File.deleteChef(removedFiles[0]);
+      }
+    } else {
+      //Espera a resolução da promise e guarda o valor caso tenha dado certo
+      const results = await Chef.find(req.body.id)
+      //Guarda a primeira posição dos resultados em "avatar"
+      const avatar = results.rows[0]
+
+      //Espera a resolução da promise
+      await Chef.update(req.body, avatar.id);
+    }
+
+    //Redirecio para página de detalhes do chef
+    return res.redirect(`/admin/chefs/${req.body.id}`);
   },
 
-  delete(req, res) {
-    Chef.findRecipes(req.body.id, function(recipe){
-      if(recipe[0]) {
-        return res.send('Chefs com receitas vinculadas!');
-      }
+  async delete(req, res) {
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    let results = await Chef.findRecipes(req.body.id)
+    //Guarda a primeira posição dos resultados em "recipe"
+    const recipe = results.rows[0];
 
-      Chef.delete(req.body.id, function() {
-        return res.redirect('/admin/chefs');
-      });
-    });
+    //Se existirem receitas vinculadas ao chef
+    if(recipe) return res.send('Chefs com receitas vinculadas!');
+
+    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    results = await Chef.find(req.body.id);
+    //Guarda a primeira posição dos resultados em "chef"
+    const chef = results.rows[0];
+
+    //Espera a resolução da promise
+    await Chef.delete(req.body.id);
+
+    //Espera a resolução da promise
+    await File.deleteChef(chef.file_id);
+
+    //Redirecina para página de chefs
+    return res.redirect('/admin/chefs');
   }
 }

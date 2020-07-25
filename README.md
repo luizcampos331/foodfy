@@ -19,15 +19,24 @@
 ## :bookmark: Sobre
 Site para visualização de receitas culinárias. </br>
 Conta com área administrativa para gerenciar as receitas e os chefs responsáveis.</br>
+Gerenciamento de upload de imagens das receitas e dos chefs</br>
 Ainda em desenvolvimento...
 
 ## :computer: Tecnologias Utilizadas
+Front-End:
 - HTML
 - CSS
+- Nunjucks
 - JavaScript
+
+Back-End:
 - NodeJS
 - Express
-- Nunjucks
+- Method Override
+- Multer
+
+Banco de dados:
+- PostgreSQL
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
@@ -53,11 +62,16 @@ Pelo seu terminal, escolha um local para o projeto e rode os comandos:
 ## :gear: Requisitos:
 - Editor de códido (recomendo o Visual Studio Code: https://code.visualstudio.com/)
 - Node JS (https://nodejs.org/en/)
+- PostgreSQL (https://www.postgresql.org/)
+
+Obs: Importe ou execute o arquivo <a href="foodfy.sql">foodfy.sql</a> no PostgreSQL para criação do banco de dados
+
 
 ## :bust_in_silhouette: Autor:
 Luiz Eduardo Campos da Silva</br>
 LinkedIn: <a href="https://www.linkedin.com/in/luiz-campos">@luiz-campos</a></br>
 Github: <a href="https://www.github.com/luizcampos331">@luizcampos331</a>
+
 
 ## :pencil: Licença
 Copyright © 2020 <a href="https://www.github.com/luizcampos331">Luiz Campos</a></br>

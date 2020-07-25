@@ -13,7 +13,7 @@
 
     {% for recipe in recipes %}
       <div class="recipe-admin">
-        <img src="../assets/{{recipe.image}}" alt="burger">
+        <img src="{{recipe.path}}" alt="{{recipe.title}}">
         <div class="texts">
           <p class="name">{{recipe.title}}</p>
           <p class="author">por {{recipe.author}}</p>

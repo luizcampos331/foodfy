@@ -3,6 +3,7 @@ const express = require('express');
 const site = require('./app/controllers/site');
 const adminRecipes = require('./app/controllers/adminRecipes');
 const adminChefs = require('./app/controllers/adminChefs');
+const multer = require('./app/middlewares/multer');
 
 //Express da a variável a responsabilidade pelas rotas
 const routes = express.Router();
@@ -29,9 +30,9 @@ routes.get('/admin/recipes/:id', adminRecipes.show);
 //Rota tipo GET para página edit
 routes.get('/admin/recipes/:id/edit', adminRecipes.edit);
 //Rota tipo POST para criação de receitas
-routes.post('/admin/recipes', adminRecipes.post);
+routes.post('/admin/recipes', multer.array('photos', 5), adminRecipes.post);
 //Rota tipo PUR para edição de receitas
-routes.put('/admin/recipes', adminRecipes.put);
+routes.put('/admin/recipes', multer.array('photos', 5), adminRecipes.put);
 //Rota tipo DELETE para exclusão de receitas
 routes.delete('/admin/recipes', adminRecipes.delete);
 
@@ -45,9 +46,9 @@ routes.get('/admin/chefs/:id', adminChefs.show);
 //Rota tipo GET para página edit
 routes.get('/admin/chefs/:id/edit', adminChefs.edit);
 //Rota tipo POST para criação de receitas
-routes.post('/admin/chefs', adminChefs.post);
+routes.post('/admin/chefs', multer.array('avatar', 1), adminChefs.post);// Caso seja passado via formulário arquivos, usar multer
 //Rota tipo PUR para edição de receitas
-routes.put('/admin/chefs', adminChefs.put);
+routes.put('/admin/chefs', multer.array('avatar', 1), adminChefs.put);// Caso seja passado via formulário arquivos, usar multer
 //Rota tipo DELETE para exclusão de receitas
 routes.delete('/admin/chefs', adminChefs.delete);
 

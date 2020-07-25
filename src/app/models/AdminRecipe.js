@@ -2,38 +2,34 @@ const db = require('../../config/db');
 const { date } = require('../../lib/util');
 
 module.exports = {
-  all(callback) {
+  all() {
     const query = `
-      SELECT rep.*, che.name as author
+      SELECT DISTINCT ON (rep.title) rep.*, fi.path as path, che.name as author
       FROM recipes rep
       LEFT JOIN chefs che ON rep.chef_id = che.id
-      ORDER BY rep.id
+      LEFT JOIN recipe_files rec ON rep.id = rec.recipe_id
+      LEFT JOIN files fi ON rec.file_id = fi.id
+      ORDER BY rep.title
     `;
 
-    db.query(query, function(error, results) {
-      if(error) throw `Database SELECT Error!${error}`;
-
-      callback(results.rows);
-    });
+    return db.query(query);
   },
 
-  create(data, callback) {
+  create(data) {
     const query = `
       INSERT INTO recipes(
         chef_id,
-        image,
         title,
         ingredients,
         preparation,
         information,
         created_at
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+      ) VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
     `;
 
     const values = [
       data.author,
-      data.image,
       data.title,
       data.ingredients,
       data.preparation,
@@ -41,14 +37,10 @@ module.exports = {
       date(Date.now()).iso,
     ];
 
-    db.query(query, values, function(error, results) {
-      if(error) throw `Database INSERT Error!${error}`
-
-      callback(results.rows[0]);
-    })
+    return db.query(query, values)
   },
 
-  find(id, callback) {
+  find(id) {
     const query = `
       SELECT rep.*, che.name as author
       FROM recipes rep
@@ -57,28 +49,22 @@ module.exports = {
       ORDER BY rep.title
     `;
 
-    db.query(query, [id], function(error, results) {
-      if(error) throw `Database SELECT ID Error!${error}`
-
-      callback(results.rows[0]);
-    })
+    return db.query(query, [id])
   },
 
-  update(data, callback) {
+  update(data) {
     const query = `
       UPDATE recipes SET
         chef_id = $1,
-        image = $2,
-        title = $3,
-        ingredients = $4,
-        preparation = $5,
-        information = $6
-      WHERE id = $7
+        title = $2,
+        ingredients = $3,
+        preparation = $4,
+        information = $5
+      WHERE id = $6
     `;
 
     const values = [
       data.author,
-      data.image,
       data.title,
       data.ingredients,
       data.preparation,
@@ -86,28 +72,24 @@ module.exports = {
       data.id
     ];
 
-    db.query(query, values, function(error, results) {
-      if(error) throw `Datasabe UPDATE Error!${error}`
-
-      callback();
-    })
+    return db.query(query, values)
   },
 
-   // === DELETE id ===
-   delete(id, callback) {
+  delete(id) {
     //Operação no banco de dados
-    db.query(`DELETE FROM recipes WHERE id = $1`, [id], function(error) {
-      if(error) throw `Database DELETE Id Error!${error}`;
-
-      callback();
-    })
+    return db.query(`DELETE FROM recipes WHERE id = $1`, [id])
   },
 
-  chefSelectOptions(callback) {
-    db.query(`SELECT id, name FROM chefs`, function(error, results) {
-      if(error) throw `Database CHEFS Error!${error}`;
+  chefSelectOptions() {
+    return db.query('SELECT id, name FROM chefs');
+  },
 
-      callback(results.rows);
-    });
-  }
+  files(id) {
+    return db.query(`
+      SELECT fi.* FROM files fi 
+      LEFT JOIN recipe_files rec ON fi.id = rec.file_id 
+      WHERE rec.recipe_id = $1
+      `, [id]
+    );
+  },
 }

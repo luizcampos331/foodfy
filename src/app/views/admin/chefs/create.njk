@@ -8,7 +8,7 @@
 <!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
 {% block content %}
 
-  <form class="validation" action="/admin/chefs" method="POST">
+  <form class="validation" action="/admin/chefs" method="POST" enctype="multipart/form-data"><!-- enctype libera o envio de arquivos no formulário -->
 
     <div class="title chefs">
       <h2>Criando chef</h2>

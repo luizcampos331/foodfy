@@ -15,7 +15,7 @@
     </div>
 
     <div class="info">
-      <img class="avatar" src="{{chef.avatar_url}}" alt="Foto de {{chef.name}}">
+      <img class="avatar" src="{{files[0].src}}" alt="Foto de {{chef.name}}">
       <h2>{{chef.name}}</h2>
       <p>{{chef.total_recipes}} receitas</p>
     </div>
@@ -26,7 +26,7 @@
       {% for recipe in recipes %}
         <div class="recipes">
           <div class="recipe-admin">
-            <img src="../../assets/{{recipe.image}}" alt="Foto de {{recipe.title}}">
+            <img src="{{recipe.path}}" alt="Foto de {{recipe.title}}">
             <div class="texts">
               <p class="name">{{recipe.title}}</p>
               <p class="author">por {{chef.name}}</p>

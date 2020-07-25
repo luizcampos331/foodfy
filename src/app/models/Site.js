@@ -1,22 +1,21 @@
 const db = require('../../config/db');
+const { Query } = require('pg');
 
 module.exports = {
-  allRecipes(callback) {
+  allRecipes() {
     const query = `
-      SELECT rep.*, che.name as author
+      SELECT DISTINCT ON (rep.title) rep.*, fi.path as path, che.name as author
       FROM recipes rep
       LEFT JOIN chefs che ON rep.chef_id = che.id
-      ORDER BY rep.id
+      LEFT JOIN recipe_files rec ON rep.id = rec.recipe_id
+      LEFT JOIN files fi ON rec.file_id = fi.id
+      ORDER BY rep.title
     `;
 
-    db.query(query, function(error, results) {
-      if(error) throw `Database SELECT RECIPES Error!${error}`;
-
-      callback(results.rows);
-    });
+    return db.query(query);
   },
 
-  findRecipe(id, callback) {
+  findRecipe(id) {
     const query = `
       SELECT rep.*, che.name as author
       FROM recipes rep
@@ -25,32 +24,27 @@ module.exports = {
       ORDER BY rep.title
     `;
 
-    db.query(query, [id], function(error, results) {
-      if(error) throw `Database SELECT RECIPE ID Error!${error}`
-
-      callback(results.rows[0]);
-    })
+    return db.query(query, [id]);
   },
 
-  allChefs(callback) {
+  allChefs() {
     const query = `
       SELECT che.*, count(rec.id) as total_recipes
       FROM chefs che
       LEFT JOIN recipes rec ON che.id = rec.chef_id
       GROUP BY che.id
-      ORDER BY che.name
     `;
 
-    db.query(query, function(error, results) {
-      if(error) throw `Database SELECT CHEFS Error!${error}`
-      
-      callback(results.rows);
-    });
+    return db.query(query)
+  },
+
+  fileChefs(file_id) {
+    return db.query(`SELECT path FROM files WHERE id = $1`, [file_id]);
   },
 
   paginate(params) {
     //Desconstruindo objeto "params"
-    const { filter, limit, offset, callback } = params;
+    const { filter, limit, offset } = params;
 
     //Iniciando as variável query em bracno, filter em branco e totalQuery como subquery
     let query = '',
@@ -73,17 +67,25 @@ module.exports = {
 
     //Query completa
     query = `
-      SELECT rep.*, ${totalQuery}, che.name as author
+      SELECT DISTINCT ON (rep.title) rep.*, fi.path as path, ${totalQuery}, che.name as author
       FROM recipes rep
       LEFT JOIN chefs che ON rep.chef_id = che.id
+      LEFT JOIN recipe_files rec ON rep.id = rec.recipe_id
+      LEFT JOIN files fi ON rec.file_id = fi.id
       ${filterQuery}
       ORDER BY rep.title LIMIT $1 OFFSET $2
     `;
 
     //Operação no banco de dados
-    db.query(query, [ limit, offset ], function(error, results) {
-      if(error) throw `Database PAGINATION Error!${error}`;
-      callback(results.rows);
-    });
-  }
+    return db.query(query, [ limit, offset ]);
+  },
+
+  files(id) {
+    return db.query(`
+      SELECT fi.* FROM files fi 
+      LEFT JOIN recipe_files rec ON fi.id = rec.file_id 
+      WHERE rec.recipe_id = $1
+      `, [id]
+    );
+  },
 }
