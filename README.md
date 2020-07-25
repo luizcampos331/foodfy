@@ -25,9 +25,6 @@ Ainda em desenvolvimento...
 ## :computer: Tecnologias Utilizadas
 <<<<<<< HEAD
 Front-End:
-=======
-FRONT-END:
->>>>>>> be501d2e207b1a0cb72e1e6acb03bc2a455bb828
 - HTML
 - CSS
 - Nunjucks
@@ -41,16 +38,6 @@ Back-End:
 - Multer
 
 Banco de dados:
-=======
-- Method Override
-
-BACK-END
-- NodeJS
-- Express
-- JavaScript
-
-BANCO DE DADOS
->>>>>>> be501d2e207b1a0cb72e1e6acb03bc2a455bb828
 - PostgreSQL
 
 ## :dart: Objetivo
