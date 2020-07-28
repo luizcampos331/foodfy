@@ -1,15 +1,12 @@
 const db = require('../../config/db');
-const { Query } = require('pg');
 
 module.exports = {
   allRecipes() {
     const query = `
-      SELECT DISTINCT ON (rep.title) rep.*, fi.path as path, che.name as author
+      SELECT rep.*, che.name as author
       FROM recipes rep
       LEFT JOIN chefs che ON rep.chef_id = che.id
-      LEFT JOIN recipe_files rec ON rep.id = rec.recipe_id
-      LEFT JOIN files fi ON rec.file_id = fi.id
-      ORDER BY rep.title
+      ORDER BY rep.updated_at
     `;
 
     return db.query(query);
@@ -67,13 +64,11 @@ module.exports = {
 
     //Query completa
     query = `
-      SELECT DISTINCT ON (rep.title) rep.*, fi.path as path, ${totalQuery}, che.name as author
+      SELECT rep.*, ${totalQuery}, che.name as author
       FROM recipes rep
       LEFT JOIN chefs che ON rep.chef_id = che.id
-      LEFT JOIN recipe_files rec ON rep.id = rec.recipe_id
-      LEFT JOIN files fi ON rec.file_id = fi.id
       ${filterQuery}
-      ORDER BY rep.title LIMIT $1 OFFSET $2
+      ORDER BY rep.updated_at LIMIT $1 OFFSET $2
     `;
 
     //Operação no banco de dados

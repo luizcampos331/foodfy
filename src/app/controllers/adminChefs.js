@@ -65,42 +65,50 @@ module.exports = {
   },
 
   async show(req, res) {
-    //Verifica se o id é numérico
+    // === Verificações ===
     if(isNaN(parseInt(req.params.id, 10)))
     {
-      //Caso não seja, renderiza a página de erro
       return res.status(404).render("admin/not-found");
     }
 
-    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+    // === GET CHEFS ===
     let results = await Chef.find(req.params.id);
-    //Guarda a primeira posição dos resultados em "chef"
     const chef = results.rows[0];
 
-    //Verifica se chef posui algum valor
     if(!chef) return res.status(404).render("admin/not-found");
 
-    //Espera a resolução da promise e guarda o valor caso tenha dado certo
-    results = await Chef.files(chef.id);
-    //Percorre o array e adiciona um novo campo para cada posição
-    const files = results.rows.map(file => ({
-      //src receberá o caminho "URL" da imagem para ser apresentada
-      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`,
-    }));
+    // GET IMAGE CHEF
+    async function getImageChef(chefId) {
+      let results = await Chef.files(chefId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`);
 
-    //Espera a resolução da promise e guarda o valor caso tenha dado certo
+      return files[0];
+    }
+
+    chef.img = await getImageChef(chef.id);
+
+    // === GET RECIPES ===
     results = await Chef.findRecipes(req.params.id);
-    //Guarda o array dos resultados em "recipes"
     const recipes = results.rows;
-    
-    //Percorre o array de recipes
-    for(recipe of recipes) {
-      //Altera o path para o caminho "URL" da imagem
-      recipe.path = `${req.protocol}://${req.headers.host}${recipe.path.replace('public', '')}`;
+
+    // GET IMAGE RECIPE
+    async function getImageRecipe(recipeId) {
+      let results = await Chef.filesRecipe(recipeId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`);
+
+      return files[0];
     }
     
-    //Renderiza a página de petalhes do chef
-    return res.render('admin/chefs/show', { chef, recipes, files })
+    const recipesPromise = recipes.map(async recipe => {
+      recipe.img = await getImageRecipe(recipe.id);
+
+      return recipe
+    });
+
+    const lastAdded = await Promise.all(recipesPromise);
+    
+    // === Renderiza a página de petalhes do chef
+    return res.render('admin/chefs/show', { chef, recipes: lastAdded })
   },
 
   async edit(req, res) {

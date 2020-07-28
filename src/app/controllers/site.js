@@ -6,12 +6,24 @@ module.exports = {
     const results = await Site.allRecipes()
     const recipes = results.rows;
 
-    for(recipe of recipes) {
-      recipe.path = `${req.protocol}://${req.headers.host}${recipe.path.replace('public', '')}`;
-    }
+    // GET IMAGE RECIPE
+    async function getImageRecipe(recipeId) {
+      let results = await Site.files(recipeId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`);
 
+      return files[0];
+    }
+    
+    const recipesPromise = recipes.map(async recipe => {
+      recipe.img = await getImageRecipe(recipe.id);
+
+      return recipe
+    }).filter((recipe, index) => index > 5 ? false : true); // 6 ultimas receitas atualizadas
+
+    const lastAdded = await Promise.all(recipesPromise);
+    
     //Retornando a página index renderizada
-    return res.render('site/home', { recipes })
+    return res.render('site/home', { recipes: lastAdded })
   },
 
   // Método GET para página about
@@ -38,15 +50,28 @@ module.exports = {
       offset
     }
 
+    // === GET RECIPES ===
     // Inicia o paginate passado o objeto params como parametro
     const results = await Site.paginate(params);
     const recipes = results.rows;
 
-    //Corrige o path da imagem
-    for(recipe of recipes) {
-      recipe.path = `${req.protocol}://${req.headers.host}${recipe.path.replace('public', '')}`;
-    }
+    // GET IMAGE RECIPE
+    async function getImageRecipe(recipeId) {
+      let results = await Site.files(recipeId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`);
 
+      return files[0];
+    }
+    
+    const recipesPromise = recipes.map(async recipe => {
+      recipe.img = await getImageRecipe(recipe.id);
+
+      return recipe
+    });
+
+    const lastAdded = await Promise.all(recipesPromise);
+
+    // === PAGINAÇÃO ===
     //Corrige o total de itens
     let total = 1
     if(recipes[0]) total = recipes[0].total
@@ -59,7 +84,7 @@ module.exports = {
     }      
 
     //Retorna página de instrutores renderizada
-    return res.render('site/recipes', { recipes, pagination, filter });
+    return res.render('site/recipes', { recipes: lastAdded, pagination, filter });
   },
 
   // Método GET para ágina recipes-details

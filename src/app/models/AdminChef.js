@@ -43,19 +43,6 @@ module.exports = {
     return db.query(query, [id]);
   },
 
-  findRecipes(id) {
-    const query = `
-      SELECT DISTINCT ON (rep.title) rep.*, fi.path as path, che.name as author
-      FROM recipes rep
-      LEFT JOIN chefs che ON rep.chef_id = che.id
-      LEFT JOIN recipe_files rec ON rep.id = rec.recipe_id
-      LEFT JOIN files fi ON rec.file_id = fi.id
-      WHERE rep.chef_id = $1
-      ORDER BY rep.title
-    `;
-    return db.query(query, [id]);
-  },
-
   update(data, file_id) {
     const query = `
       UPDATE chefs SET
@@ -86,5 +73,26 @@ module.exports = {
     `;
 
     return db.query(query, [id]);
-  }
+  },
+
+  filesRecipe(id) {
+    const query = `
+      SELECT fi.*
+      FROM files fi
+      LEFT JOIN recipe_files rec ON fi.id = rec.file_id
+      WHERE rec.recipe_id = $1
+    `;
+
+    return db.query(query, [id]);
+  },
+
+  findRecipes(id) {
+    const query = `
+      SELECT *
+      FROM recipes
+      WHERE chef_id = $1
+      ORDER BY created_at DESC
+    `;
+    return db.query(query, [id]);
+  },
 }

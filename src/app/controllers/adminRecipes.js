@@ -7,12 +7,23 @@ module.exports = {
     let results = await Recipe.all()
     const recipes = results.rows;
 
-    for(recipe of recipes) {
-      if(recipe.path)
-        recipe.path = `${req.protocol}://${req.headers.host}${recipe.path.replace('public', '')}`;
-    }
+    // GET IMAGE RECIPE
+    async function getImageRecipe(recipeId) {
+      let results = await Recipe.files(recipeId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`);
 
-    return res.render('admin/recipes/index.njk', { recipes })
+      return files[0];
+    }
+    
+    const recipesPromise = recipes.map(async recipe => {
+      recipe.img = await getImageRecipe(recipe.id);
+
+      return recipe
+    });
+
+    const lastAdded = await Promise.all(recipesPromise);
+    
+    return res.render('admin/recipes/index.njk', { recipes: lastAdded })
   },
 
   // === Método Create - Visualizar página ===

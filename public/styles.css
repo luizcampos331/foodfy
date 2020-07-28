@@ -250,6 +250,10 @@ footer {
   gap: 20px;
 }
 
+.recipes_page .recipe {
+  cursor: pointer;
+}
+
 .recipes_page .recipe img {
   /*Arredondamento dos cantos da imagem*/
   border-radius: 15px;
