@@ -1,22 +1,20 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
 {% extends "admin/layout.njk" %}
 
-{% block logo%}
-  <img src="../../assets/logo-branca.png" alt="Foodfy">
-{% endblock %}
-
 <!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
 {% block content %}
+  <div class="forms">
+    <form class="validation" action="/admin/recipes" method="POST" enctype="multipart/form-data"><!-- enctype libera o envio de arquivos no formulário -->
 
-  <form class="validation" action="/admin/recipes" method="POST" enctype="multipart/form-data"><!-- enctype libera o envio de arquivos no formulário -->
+      <div class="title-create">
+        <h2>Criando receita</h2>
+        <button class="save-button" type="submit">Salvar receita</button>
+      </div>
 
-    <div class="title">
-      <h2>Criando receita</h2>
-      <button class="save" type="submit">Salvar receita</button>
-    </div>
+      <!-- Inclui os campos que estão em outro arquivo -->
+      {% include 'admin/recipes/fields.njk'%}
 
-    {% include 'admin/recipes/fields.njk'%}
-
-  </form>
+    </form>
+  </div>
 
 {% endblock %}

@@ -1,0 +1,293 @@
+/* === SITE === */
+.content-page form {
+  position: absolute;
+  right: 55px;
+}
+
+.content-page form input {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding: 0 15px;
+  width: 216px;
+  height: 35px;
+  margin-right: 8px;
+  color: #999;
+  font-size: 14px;
+}
+
+.content-page form button {
+  background: var(--purple);
+  width: 91px;
+  height: 37px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  outline: 0;
+}
+
+/* === ADMIN === */
+.content-page-admin .forms {
+  /*Posição relativa, estratégia para posicionamento do botão delete*/
+  position: relative;
+  /*Margem do topo*/
+  margin-top: 50px;
+}
+
+.content-page-admin .title-edit,
+.content-page-admin .title-create {
+  /*Display flexivel, seguindo o padrão com os elementos na mesma linha*/
+  display: flex;
+  /*Alinhamento central no eixo x*/
+  align-items: center;
+  /*Cada elemento com espaço total entre eles, como só há dois elementos, cada
+  um esta num extremo do elemento pai*/
+  justify-content: space-between;
+  /*Margem do fundo*/
+  margin-bottom: 26px;
+}
+
+form .save-button,
+form .delete-button {
+  /*Preenchimento de 9 no topo e fundo e 20 nas laterais*/
+  padding: 9px 0;
+  width: 139px;
+  /*Tamanho da fonte*/
+  font-size: 16px;
+  /*Cor do texto*/
+  color: #fff;
+  /*Peso da fonte - negrito*/
+  font-weight: bold;
+  /*Arreddondamento dos cantos*/
+  border-radius: 4px;
+  /*Cursor tipo ponteiro*/
+  cursor: pointer;
+}
+
+form .save-button {
+  /*Cor de fundo*/
+  background: var(--purple);
+}
+
+form .delete-button {
+  /*Cor de fundo*/
+  background: #DC4747;
+  /*Posição absoluta em relação ao pai*/
+  position: absolute;
+  /*165px de distancia da direita, estrategia para posicionar o botão ao lado do de salvar receita*/
+  right: 155px;
+}
+
+form .item {
+  /*Margem do fundo*/
+  margin-bottom: 30px;
+}
+
+form .item div {
+  /*Tamanho da fonte*/
+  font-size: 16px;
+  /*Peso da fonte - ngrito*/
+  font-weight: bold;
+  /*Cor do texto*/
+  color: #111;
+}
+
+form .item input,
+form .item select {
+  /*Largura total em relação ao elemento pai*/
+  width: 100%;
+  /*Altura*/
+  height: 49px;
+  /*Cor de fundo*/
+  background: #fff;
+  /*Borda de 1px solida com cor*/
+  border: 1px solid #ddd;
+  /*Arredondamento dos cantos*/
+  border-radius: 4px;
+  /*tamanho da fonte*/
+  font-size: 15px;
+  /*Preenchiemnto de 0 no topo e fundo e 20 nas laterias*/
+  padding: 0 20px;
+  /*Estratétia para o padding não ultrpassar os limites de largura do elemento pai*/
+  box-sizing: border-box;
+  /*Margem do topo*/
+  margin-top: 10px;
+}
+
+form .item select {
+  /* Permitir estilização do select */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /*Imagem da seta e gradiente de cores*/
+  background-image: url(../../assets/seta.svg);
+  /*Imagem não repete*/
+  background-repeat: no-repeat;
+  /*Posição da imagem com com 0.7em da direita, 50% de espaço do topo, gradiente com 0 e 0*/
+  background-position: right .7em top 50%;
+  /*Tamanho da imagem com 0.65em em cima e em baixo e auto nas laterias, gradiente com 100%*/
+  background-size: .65em auto;
+}
+
+form .item .photos-list {
+  display: flex;
+  margin-top: 10.5px;
+}
+
+form .item #photos-upload {
+  position: relative;
+  margin-right: 10.5px;
+}
+
+form .item #photos-upload input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  width: 149px;
+  height: 149px;
+  opacity: 0;
+  /*tamanho da fonte em zero para o cursor pointer pegar em tudo*/
+  font-size: 0;
+  cursor: pointer;
+}
+
+form .item #photos-upload .photo-add {
+  width: 147px;
+  height: 147px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3.5px;
+}
+
+form .item #photos-upload .photo-add i {
+  font-size: 35px;
+  font-weight: bold;
+  color: #777;
+}
+
+form .item #photos-preview {
+  display: grid;
+  /*O mesmo que = 1fr 1fr 1fr*/
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 0 10.5px;
+  width: 100%;
+  height: 149px;
+}
+
+form .item #photos-preview .photo,
+form .item #photos-preview .avatar {
+  position: relative;
+}
+
+form .item #photos-preview .photo i,
+form .item #photos-preview .avatar i  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.8);
+  color: red;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 500%;
+  cursor: pointer;
+  transition: opacity 200ms;
+  opacity: 0;
+}
+
+form .item #photos-preview .photo i:hover,
+form .item #photos-preview .avatar i:hover {
+  opacity: 1;
+}
+
+form .item #photos-preview .photo img,
+form .item #photos-preview .avatar img {
+  width: 100%;
+  height: 149px;
+  object-fit: cover;
+  border-radius: 3.5px;
+}
+
+form .item #avatar-upload {
+  position: relative;
+  display: block;
+  /*Sem rolagem*/
+  overflow: hidden;
+  width: 139px;
+}
+
+form .item #avatar-upload p {
+  margin: 10px 0;
+  padding: 10.5px 0;
+  border-radius: 4px;
+  background-color: var(--purple);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+form .item #avatar-upload input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /*tamanho da fonte em zero para o cursor pointer pegar em tudo*/
+  font-size: 0;
+  cursor: pointer;
+}
+
+form .item button {
+  /*Cor de fundo*/
+  background: #fff;
+  /*Tamanho da fonte*/
+  font-size: 16px;
+  /*Peso da fonte - negrito*/
+  font-weight: bold;
+  /*Cor do texto*/
+  color: var(--purple);
+  /*Margem do topo*/
+  margin-top: 15px;
+  /*Cursor tipo ponteiro*/
+  cursor: pointer;
+  /*Remove a borda de quando o botão é clicado*/
+  outline: 0;
+}
+
+form .item textarea {
+  /*Largura total em relação ao elemento pai*/
+  width: 100%;
+  /*Altura*/
+  height: 257px;
+  /*Borda de 1px solida com cor*/
+  border: 1px solid #ddd;
+  /*Cor de fundo*/
+  background: #fff;
+  /*Arredondamento dos cantos*/
+  border-radius: 4px;
+  /*Preenchimento de 18 no topo e fundo e 20 nas laterais*/
+  padding: 18px 20px;
+  /*Tamanho da fonte*/
+  font-size: 15px;
+  /*Familia de fontes*/
+  font-family: 'Roboto', sans-serif;
+  /*Margem do topo*/
+  margin-top: 10px;
+  /*Estratétia para o padding não ultrpassar os limites de largura do elemento pai*/
+  box-sizing: border-box;
+}

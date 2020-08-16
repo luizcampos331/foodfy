@@ -1,0 +1,23 @@
+<header>
+  <div class="header">
+    <div class="logo">
+      <a href="/">
+        <img src="../../../assets/logo-branca.png" alt="Foodfy">
+      </a>
+    </div>
+
+    <div class="links-admin">
+      <a href="/admin/recipes">Receitas</a>
+      <a href="/admin/chefs">Chefs</a>
+      {% if session.isAdmin %}
+        <a href="/admin/users">Usuários</a>
+      {% else %}
+        <a href="/admin/profile">Usuários</a>
+      {% endif%}
+      
+      <form action="/session/logout" method="post">
+        <button class="button" type="submit">Sair</button>
+      </form>
+    </div>
+  </div>
+</header>

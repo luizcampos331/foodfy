@@ -1,0 +1,145 @@
+/* === HEADER === */
+
+.content-page-admin .title {
+  /*Margem de 50 no topo, 0 nas laterais e 26 no fundo*/
+  margin: 50px 0 26px;
+  /*Display flexivel, item no padrão, alinhados lado a lado*/
+  display: flex;
+  /*Alinhamento central no eixo x */
+  align-items: center;
+  /*Cada elemento com espaço total entre eles, como só há dois elementos, cada
+  um esta num extremo do elemento pai*/
+  justify-content: space-between;
+}
+
+.content-page-admin .title h2 {
+  /*Tamanho da fonte*/
+  font-size: 24px;
+  /*Peso da fonte - negrito*/
+  font-weight: bold;
+  /*Cor do texto*/
+  color: #111
+}
+
+.content-page-admin .title a {
+  /*Cor de fundo*/
+  background: var(--purple);
+  /*Preenchimento de 9 no topo e fundo e 20 nas laterais*/
+  padding: 9px 0;
+  width: 139px;
+  /*Cor do texto*/
+  color: #fff;
+  /*Tamanho da fonte*/
+  font-size: 16px;
+  /*Peso da fonte - negrito*/
+  font-weight: bold;
+  /*Arredondamento dos cantos*/
+  border-radius: 4px;
+  /*Retira o sublinhado*/
+  text-decoration: none;
+  text-align: center;
+}
+
+.content-page-admin .create-account .buttons a {
+  padding: 9px 38px;
+  background-color: #8a8a8a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-left: 16px;
+}
+
+/* === RECIPES === */
+.content-page-admin .recipes-admin {
+  /*Display em grade para apresentação das receitas na rota "index"*/
+  display: grid;
+  /*duas colunas de receits de tamanho igual*/
+  grid-template-columns: 1fr 1fr;
+}
+
+.content-page-admin .recipes-admin .recipe-admin {
+  /*Display flexivel para que os textos fiquem ao lado da foto da rececita*/
+  display: flex;
+  /*Margem de fundo*/
+  margin-bottom: 20px;
+}
+
+.content-page-admin .recipes-admin img {
+  /*Largura da imagem*/
+  width: 172px;
+  /*Altura da imagem*/
+  height: 80px;
+  /*Arredondamento dos cantos*/
+  border-radius: 8.57px;
+  /*Margem direita*/
+  margin-right: 20px;
+}
+
+.content-page-admin .recipes-admin .texts .name {
+  /*Tamanho da fonte*/
+  font-size: 18px;
+  /*Cor da texto*/
+  color: #111;
+  /*Margem do fundo*/
+  margin-bottom: 5px;
+}
+
+.content-page-admin .recipes-admin .texts .author {
+  /*Tamanho da fonte*/
+  font-size: 14px;
+  /*Cor da texto*/
+  color: #777;
+  /*Margem do fundo*/
+  margin-bottom: 10px;
+}
+
+.content-page-admin .recipes-admin .texts a {
+  /*Remove o sublinhado*/
+  text-decoration: none;
+  /*Tamanho da fonte*/
+  font-size: 14px;
+  /*Cor do texto*/
+  color: var(--purple);
+  /*Peso da fonte - negrito*/
+  font-weight: bold;
+}
+
+/* === CHEFS ===*/
+.chefs_page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px 25px;
+  margin-top: 20px
+}
+
+.chefs_page .chef {
+  display: flex;
+  align-items: center;
+}
+
+.chefs_page .chef img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.content-page-admin .admin .chef p {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #111;
+}
+
+.content-page-admin .admin .chef a {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--purple);
+  text-decoration: none;
+}
+
+/* === Users === */
+.content-page-admin .users-admin form .delete-button {
+  width: auto;
+}

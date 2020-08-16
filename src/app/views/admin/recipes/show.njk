@@ -1,17 +1,15 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
 {% extends "admin/layout.njk" %}
 
-{% block logo %}
-  <img src="../../assets/logo-branca.png" alt="Foodfy">
-{% endblock %}
-
 <!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
 {% block content %}
 
   <div class="recipes_details_admin">
     <div class="init">
       <h2>Receita: {{recipe.title}}</h2>
-      <a href="/admin/recipes/{{recipe.id}}/edit" class="button">Editar receita</a>
+      {% if session.isAdmin or recipe.user_id == session.userId %}
+        <a href="/admin/recipes/{{recipe.id}}/edit" class="button">Editar receita</a>
+      {% endif %}
     </div>
     
     <div class="gallery">

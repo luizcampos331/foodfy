@@ -1,0 +1,83 @@
+.content-page-admin .title.users {
+  margin-bottom: 64px;
+}
+
+.content-page-admin .users-admin {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.content-page-admin .user-admin .name {
+  font-size: 18px;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.content-page-admin .user-admin .email {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+.content-page-admin .user-admin .buttons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 52px;
+}
+
+.user-admin .buttons a {
+  color: var(--purple);
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.user-admin .buttons button {
+  position: initial;
+  background: none;
+  color: #F55A5A;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0;
+}
+
+/* CREATE */
+.forms.create-account .title-create {
+  margin-bottom: 64px;
+}
+
+.forms.create-account .fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 40px;
+}
+
+.forms.create-account .fields .item {
+  position: relative;
+}
+
+.forms.create-account .fields .item .error {
+  position: absolute;
+  background-color: #DC4747;
+  color: white;
+  width: 100%;
+  padding: 5px;
+  top: 40px;
+  border-radius: 4px;
+}
+
+.forms.create-account .fields .item.check {
+  display: flex;
+  align-items: center;
+}
+
+.forms.create-account .fields .item.check h3 {
+  font-size: 16px;
+}
+
+.forms.create-account .fields .item.check input {
+  width: 15px;
+  margin: 0 8px 0 0;
+}
+
+/* EDIT */

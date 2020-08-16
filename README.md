@@ -3,9 +3,17 @@
 </h1>
 
 <h1>
-  <img src="public/assets/demo.gif">
+  <img src="public/assets/gifs/demo.gif">
 </h1>
 
+## Apresentação
+<p align="center">
+  <a href="public/assets/gifs/site.gif">Site</a> |
+  <a href="public/assets/gifs/user.gif">User</a> |
+  <a href="public/assets/gifs/admin.gif">Admin</a>
+</p>
+
+## Indice
 <p align="center">
   <a href="#bookmark-sobre">Sobre</a> |
   <a href="#computer-tecnologias-utilizadas">Tecnologias</a> |
@@ -19,7 +27,8 @@
 ## :bookmark: Sobre
 Site para visualização de receitas culinárias. </br>
 Conta com área administrativa para gerenciar as receitas e os chefs responsáveis.</br>
-Gerenciamento de upload de imagens das receitas e dos chefs</br>
+Gerenciamento de upload de imagens das receitas e dos chefs.</br>
+Gerenciamento de sessão de usuário e níveis de permessão dentro da aplicação.
 Ainda em desenvolvimento...
 
 ## :computer: Tecnologias Utilizadas
@@ -34,12 +43,16 @@ Back-End:
 - Express
 - Method Override
 - Multer
+- bcryptjs
+- express-session
+- nodemailer
 
 Banco de dados:
 - PostgreSQL
 
 ## :dart: Objetivo
 Site tem como objetivo disponibilizar:
+- Cadastrar usuários do sistema em dois níveis de permissão (Comum/Admin)
 - Visualização de receitas culinárias e os chefs que as criaram
 - Cadastro, listagem, edição e exclusão de receitas culinárias
 - Cadastro, listagem, edição e exclusão de chefs

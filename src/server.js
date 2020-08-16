@@ -1,19 +1,22 @@
-//Importação do express para roteamento
+//Imports
 const express = require('express');
-//Importação do nunjucks para template engine
 const nunjucks = require('nunjucks');
-
-//Importando as funcionalidades de routes em uma variável
 const routes = require('./routes');
 const methodOverride = require('method-override');
+const session = require('./config/session');
 
-const { urlencoded } = require('express');
-
-//Colocando funcionalidades do express na constante server
 const server = express();
 
+//Disponibiliza durante a aplicação inteira o controle de sessão de usuário
+server.use(session);
+//Disponibiliza a sessão para todas as páginas usarem
+server.use((req, res, next) => {
+  res.locals.session = req.session
+  next()
+})
+
 //Responsável por liberar a passagem de dados de um formulário POST via req.body
-server.use(urlencoded({ extended: true }));
+server.use(express.urlencoded({ extended: true }));
 //Server poderá usar arquivos estáticos (css) da pasta public
 server.use(express.static('public'));
 /*Caso seja pedido, irá sobreescrever o method da página, nesse caso será para
@@ -38,4 +41,4 @@ nunjucks.configure('src/app/views', {
 });
 
 
-server.listen(5002);
+server.listen(5005);

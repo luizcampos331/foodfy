@@ -1,0 +1,18 @@
+footer {
+  /*Cor de fundo do rodapé*/
+  background: #eeeeee;
+  /*Largura do rodapé*/
+  width: 100%;
+  /*Altura do rodapé*/
+  height: 62px;
+  /*Display flexivel*/
+  display: flex;
+  /*alinhamento do texto no eixo Y*/
+  align-items: center;
+  /*alinhamento do texto no eixo X*/
+  justify-content: center;
+  /*Posisão do texto absoluta / para que o rodape fique no fim da página*/
+  position: absolute;
+  /*Distancia entre o rodapé e o fundo / para que o rodape fique no fim da página*/
+  bottom: 0;
+}

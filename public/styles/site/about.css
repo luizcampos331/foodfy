@@ -1,0 +1,17 @@
+.content-page .about h2, h3 {
+  /*Margem no fundo*/
+  /*Cor do texto*/
+  margin-bottom: 20px;
+  color: #111111;
+}
+
+.content-page .about p {
+  /*Margem no fundo*/
+  margin-bottom: 30px;
+  /*Tamanho da fonte*/
+  font-size: 18px;
+  /*Cor do texto*/
+  color: #444444;
+  /*Espaçamento entre linhas*/
+  line-height: 28px;
+}

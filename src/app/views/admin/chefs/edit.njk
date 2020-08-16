@@ -1,16 +1,13 @@
  <!-- Extendendo as partes repetidas para o layout.njk -->
 {% extends "admin/layout.njk" %}
 
-{% block logo%}
-  <img src="../../../assets/logo-branca.png" alt="Foodfy">
-{% endblock %}
-
 <!-- Conteúdo do bloco content irá substituir o conteúdo no layout.njk -->
 {% block content %}
   <div class="forms">
+    
     <form id="form-delete" action="/admin/chefs?_method=DELETE" method="POST">
       <input type="hidden" name="id" value={{ chef.id }}> 
-      <button class="delete chef" type="submit">Deletar</button>
+      <button class="delete-button chef" type="submit">Deletar</button>
     </form>
 
     <form class="validation" action="/admin/chefs?_method=PUT" method="POST" enctype="multipart/form-data"><!-- enctype libera o envio de arquivos no formulário -->
@@ -18,10 +15,11 @@
       <div class="title-edit">
         <h2>Editando chef</h2>
         <div class="buttons">
-          <button class="save chef" type="submit">Salvar chef</button>
+          <button class="save-button chef" type="submit">Salvar chef</button>
         </div>
       </div>
 
+      <!-- Inclui os campos que estão em outro arquivo -->
       {% include 'admin/chefs/fields.njk'%}
 
       <input type="hidden" name="id" value={{ chef.id }}> 

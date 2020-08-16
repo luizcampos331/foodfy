@@ -1,6 +1,6 @@
 <div class="item">
 
-  <div>Imagens da receita</div>
+  <div>Imagens da receita *</div>
 
   <div class="photos-list">
 
@@ -27,15 +27,16 @@
             <input type="hidden" name="photo_id" value="{{image.id}}">
           </div>
         {% endfor %}
-        <input type="hidden" name="removed_files">
       {% endif %}
+      
+      <input type="hidden" name="removed_files">
       
     </div>
   </div>
 </div>
 
 <div class="item inputs">
-  <div>Nome da receita</div>
+  <div>Nome da receita *</div>
   <input 
     class="input"
     type="text" 
@@ -46,7 +47,7 @@
 <div class="item">
   <div>Chef</div>
   <div>
-    <select name="author">
+    <select name="chef_id">
 
       <option>Selecione um chef</option>
 
@@ -63,7 +64,7 @@
 
 <div class="item">
   
-  <div>Ingredientes</div>
+  <div>Ingredientes *</div>
 
   <div id="ingredients">
     {% if recipe.ingredients %}
@@ -90,7 +91,7 @@
 
 <div class="item">
 
-  <div>Modo de preparo</div>
+  <div>Modo de preparo *</div>
 
   <div id="preparations">
     {% if recipe.preparation %}

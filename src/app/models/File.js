@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports = {
   //usar {} no caso de os dados separem tratados antes da passagem para cá
-  async createRecipe({filename, path, recipe_id}) {
+  async createFileRecipe({filename, path, recipe_id}) {
     let query = `
       INSERT INTO files (
         name,
@@ -34,7 +34,7 @@ module.exports = {
     return db.query(query, values);
   }, 
 
-  createChef(data) {
+  async createFileChef(data) {
     const query = `
       INSERT INTO files (
         name,
@@ -48,7 +48,8 @@ module.exports = {
       data[0].path
     ];
 
-    return db.query(query, values);
+    const results = await db.query(query, values);
+    return results.rows[0].id
   },
 
   async deleteRecipe(id) {

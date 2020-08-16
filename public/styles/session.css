@@ -1,0 +1,90 @@
+/* === Login === */
+/* Header */
+.content-login .header {
+  text-align: center;
+}
+
+.content-login .header h3 {
+  font-size: 24px;
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+/* Content */
+.content-login .content-page-session {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.content-login .fields .item h3 {
+  font-size: 16px;
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.content-login .fields .item input {
+  width: 100%;
+  font-size: 16px;
+  color: #999999;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 50px;
+}
+
+.content-login .fields .item div input:last-child {
+  margin-bottom: 35px;
+}
+
+.content-login .password .fields .item div input[name="email"] {
+  margin-bottom: 35px;
+}
+
+.content-login .fields .item:first-child div {
+  position: relative;
+}
+
+.content-login .fields .item div .error {
+  position: absolute;
+  background-color: #DC4747;
+  color: white;
+  width: 100%;
+  padding: 5px;
+  top: 55px;
+  border-radius: 4px;
+}
+
+/* Footer */
+.content-page-session .footer ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-page-session .footer ul a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #969696
+}
+
+.content-page-session button {
+  background-color: var(--purple);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 9px 35px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.content-page-session .password button {
+  position: absolute;
+  right: 0;
+}
+
+.content-page-session .password form {
+  position: relative;
+}

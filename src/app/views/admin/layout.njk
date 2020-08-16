@@ -6,27 +6,16 @@
       <title>Foodfy - Admin</title>
     {% endblock %}
 
-    <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Inclui styles que estão em outro arquivo -->
+    {% include 'admin/parts/styles.njk' %}
   </head>
 
   <body class="content-admin">
-    <header>
-      <div class="header">
-        <div class="logo">
-          <a href="/admin/recipes">
-            {% block logo %}
-              <img src="../assets/logo-branca.png" alt="Foodfy">
-            {% endblock %}
-          </a>
-        </div>
-
-        <div class="links-admin">
-          <a href="/admin/recipes">Receitas</a>
-          <a href="/admin/chefs">Chefs</a>
-        </div>
-      </div>
-    </header>
+    
+    {% include 'admin/parts/messages.njk' %}
+    
+    <!-- Inclui o header que esta em outro arquivo -->
+    {% include 'admin/parts/header.njk' %}
 
     <div class="content-page-admin">
 

@@ -1,0 +1,67 @@
+/*Variáveis de cor*/
+:root {
+  --purple: #6558C3;
+}
+
+/* === Conteúdo comum a todas as páginas === */
+* {
+  /*Margem, preenchimento e bordas da página toda com zero*/
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  outline: 0;
+}
+
+html {
+  /*Familia de fontes Roboto*/
+  font-family: 'Roboto', sans-serif;
+  /*Display flexivel / para que o rodape fique no fim da página*/
+  display: flex;
+  /*Direção do display em colunas / para que o rodape fique no fim da página*/
+  flex-direction: column;
+  /*Posição do html todo relativa / para que o rodape fique no fim da página*/
+  position: relative;
+  /*Altura mínima do html em 100% / para que o rodape fique no fim da página*/
+  min-height: 100%;
+}
+
+body {
+  /*Margem no topo e laterais em 0 e no fundo com 62px / para que o rodape fique no fim da página*/
+  margin: 0 0 62px;
+}
+
+/* === SITE === */
+.content-page,
+.content-page-admin {
+  /*Largura do conteúdo da página*/
+  width: 940px;
+  /*Display flexivel*/
+  display: flex;
+  /*Direção do display em colunas*/
+  flex-direction: column;
+  /*Margem no topo em 0, nas laterais automatico e entre o conteudo e o rodape 50px*/
+  margin: 0 auto 50px;
+}
+
+.content-page-admin {
+  margin: 0 auto;
+}
+
+/* === ADMIN === */
+.content-admin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 50px;
+}
+
+/* === Login === */
+.content-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

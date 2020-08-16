@@ -12,7 +12,6 @@ for(let recipe of recipes) {
   });
 }
 
-
 // === Página de detalhes da receita ===
 //Guarda num array todos os campos com as classes solicitadas
 const hide = [
@@ -113,7 +112,7 @@ const formDelete = document.querySelector('#form-delete')
 if(formDelete){
   formDelete.addEventListener('submit', function(event) {
     //Mostra um popup de confirmação da exclusão
-    const confirmation = confirm('Deseja excluir esta receita?')
+    const confirmation = confirm('Tem certeza que deseja excluir? Esta operação não poderá ser desfeita!')
     //Se a confirmação for cancelada ele interrompe o submit do botão deletar
     if(!confirmation) event.preventDefault()
   })
@@ -151,28 +150,6 @@ for(item of menuItemsSite) {
     //Adiciona a classe active ao a do menu
     item.classList.add('active-site');
   }
-}
-
-// === Valida campos Forms ===
-const validation = document.querySelector('.validation')
-if(validation){
-  validation.addEventListener('submit', function(event) {
-    const inputs = document.querySelectorAll('.input')
-
-    for(let i = 0; i < inputs.length; i++) {
-      const x = document.getElementById(`empty${i}`)
-      if(x) x.remove();
-    }
-
-    for(let i = 0; i < inputs.length; i++) {
-      if(inputs[i].value == '') {
-        const items = document.querySelectorAll('.inputs');
-        items[i].innerHTML += `<p class="empty" id="empty${i}">* Campo obrigatório!</p>`
-        items[i].children[1].value = '';
-        event.preventDefault();
-      }
-    }
-  });
 }
 
 // === Paginação ===
@@ -468,5 +445,47 @@ const Lightbox = {
     Lightbox.target.style.top = '-100%';
     Lightbox.target.style.bottom = 'initial';
     Lightbox.closeButton.style.top = '-80px';
+  }
+}
+
+
+const Validate = {
+  //Será passado um input e a função do Mask
+  apply(input, func) {
+    Validate.clearErrors(input);
+    let results = Validate[func](input.value);
+    input.value = results.value;
+
+    if(results.error)
+      Validate.displayError(input, results.error);
+
+  },
+
+  displayError(input, error) {
+    const div = document.createElement('div');
+    div.classList.add('error');
+    div.innerHTML = error;
+    input.parentNode.appendChild(div);
+    input.focus();
+  },
+
+  clearErrors(input) {
+    const errorDiv = input.parentNode.querySelector('.error');
+
+    if(errorDiv)
+      errorDiv.remove();
+  },
+
+  isEmail(value) {
+    let error = null;
+    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    
+    if(!value.match(mailFormat))
+      error = "E-mail inválido!"
+
+    return {
+      error,
+      value
+    }
   }
 }

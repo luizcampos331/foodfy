@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Conteúdo será substituido caso o bloco head seja encontrado em outros arquivos -->
+    {% block head %}
+      <title>Foodfy - Login</title>
+    {% endblock %}
+
+    <!-- Inclui styles que estão em outro arquivo -->
+    {% include 'session/parts/styles.njk' %}
+  </head>
+
+  <body class="content-login">
+    
+    {% include 'session/parts/messages.njk' %}
+    
+    <!-- Inclui o header que esta em outro arquivo -->
+    {% include 'session/parts/header.njk' %}
+
+    <div class="content-page-session">
+
+      {% block content %}
+      {% endblock %}
+
+    </div>
+    
+    <script src="/scripts.js"></script>
+  </body>
+</html>

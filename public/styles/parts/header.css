@@ -1,0 +1,100 @@
+/* === SITE === */
+.content-page header {
+  /*Display flexivel, por padrão a direção do display fica em linha*/
+  display: flex;
+  /*Itens alinhados os centro para ficar alinhado com a logo*/
+  align-items: center;
+  /*Margem entre o cabeçalho e o topo do html*/
+  margin-top: 36.1px;
+  /*Margem entre o cabeçalho e o conteudo do html*/
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.links {
+  /*Margem entre a logo e os links do menu*/
+  margin-left: 122.4px;
+}
+
+.links a {
+  /*Margem entre os links do menu*/
+  margin-right: 30px;
+  /*Remoção da sublinhado dos links do menu*/
+  text-decoration: none;
+  /*Cor do texto dos links do menu*/
+  color: #111111
+}
+
+.links a.active-site {
+  font-weight: bold;
+}
+
+.content-page .account {
+  position: absolute;
+  right: 0;
+  top: -6px;
+}
+
+.content-page .account span {
+  font-size: 43px;
+  color: var(--purple);
+}
+
+/* === ADMIN === */
+.content-admin header {
+  width: 100%;
+  height: 80px;
+  background-color: #111;
+}
+
+.content-admin .header {
+  /*Display flexivel*/
+  width: 940px;
+  height: 26.9px;
+  display: flex;
+  align-items: center;
+  margin: 27px auto 26.1px;
+}
+
+.content-admin .links-admin {
+  margin-left: 50.4px;
+  display: flex;
+  align-items: center;
+}
+
+.content-admin .links-admin a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #999;
+  text-align: left;
+  margin-right: 30px;
+  font-weight: bold;
+}
+
+.content-admin .links-admin a.active {
+  color: #fff;
+}
+
+.content-admin .links-admin form {
+  position: absolute;
+  right: 50px;
+}
+
+.content-admin .links-admin form button {
+  background: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* === Login === */
+.content-login header {
+  text-align: center;
+  margin: 35px 0 146px;
+}
+
+.content-login .links,
+.content-login .links a {
+  margin: 0;
+}

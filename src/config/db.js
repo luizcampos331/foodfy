@@ -9,3 +9,6 @@ module.exports = new Pool({
   port: 5432,
   database: 'foodfy'
 });
+
+//Inicie o PostgreSQL antes de iniciar o sistema
+//pg_ctl -D /usr/local/var/postgres start
