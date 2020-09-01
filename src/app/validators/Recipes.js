@@ -1,5 +1,6 @@
 const Recipe = require('../models/Recipe')
-const fs = require('fs')
+const fs = require('fs');
+const Chef = require('../models/Chef');
 
 function checkFile(files) {
   if(files.length < 1) return 'Por favor, envie pelo menos uma foto!'
@@ -41,7 +42,7 @@ async function get(req, res, next) {
 }
 
 async function post(req, res, next) {
-  const chefOptions = await Recipe.chefSelectOptions()
+  const chefOptions = await Chef.findAll()
   
   // check image
   const zeroImage = checkFile(req.files);
@@ -81,7 +82,7 @@ async function show(req, res, next) {
 
 async function put(req, res, next) {
   // === Select Files
-  const chefOptions = await Recipe.chefSelectOptions()
+  const chefOptions = await Chef.findAll()
 
   // === Select Files
   const results = await Recipe.files(req.body.id);

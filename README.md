@@ -77,8 +77,10 @@ Pelo seu terminal, escolha um local para o projeto e rode os comandos:
 - Node JS (https://nodejs.org/en/)
 - PostgreSQL (https://www.postgresql.org/)
 
-Obs: Importe ou execute o arquivo <a href="foodfy.sql">foodfy.sql</a> no PostgreSQL para criação do banco de dados
-
+Obs: utilize o conteúdo do arquivo <a href="foodfy.sql">foodfy.sql</a> para a criação do banco de dados. Após a criação do banco de dados, crie dados fakes para testar a aplicação com o comando no terminal estando na pasta raiz do projeto:
+```bash
+  $ node seed.js
+```
 
 ## :bust_in_silhouette: Autor:
 Luiz Eduardo Campos da Silva</br>

@@ -1,7 +1,12 @@
 const db = require('../../config/db');
-const { date } = require('../../lib/util');
+
+const Base = require('./Base')
+
+Base.init({ table: 'chefs'})
 
 module.exports = {
+  ...Base,
+
   async all() {
     const query = `
       SELECT che.*, fi.path as path 
@@ -11,24 +16,6 @@ module.exports = {
     `;
     const results = await db.query(query);
     return results.rows
-  },
-
-  async create(data, file_id) {
-    const query = `
-      INSERT INTO chefs (
-        name,
-        file_id
-      ) VALUES ($1, $2)
-      RETURNING id
-    `;
-
-    const values = [
-      data.name,
-      file_id
-    ];
-
-    const results = await db.query(query, values);
-    return results.rows[0].id
   },
 
   async find(id) {
@@ -42,27 +29,6 @@ module.exports = {
     `;
     const results = await db.query(query, [id]);
     return results.rows[0]
-  },
-
-  update(data, file_id) {
-    const query = `
-      UPDATE chefs SET
-        name = $1,
-        file_id = $2
-      WHERE id = $3
-    `;
-
-    const values = [
-      data.name,
-      file_id,
-      data.id
-    ];
-
-    return db.query(query, values);
-  },
-
-  delete(id) {
-    return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
   },
 
   async files(id) {

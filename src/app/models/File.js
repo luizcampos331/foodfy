@@ -42,7 +42,7 @@ module.exports = {
       ) VALUES ($1, $2)
       RETURNING id
     `;
-
+    
     const values = [
       data[0].filename,
       data[0].path

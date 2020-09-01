@@ -1,7 +1,11 @@
 const db = require('../../config/db');
-const { date } = require('../../lib/util');
+const Base = require('./Base')
+
+Base.init({ table: 'recipes'})
 
 module.exports = {
+  ...Base,
+
   async all() {
     const query = `
       SELECT rep.*, che.name as author
@@ -79,11 +83,6 @@ module.exports = {
   delete(id) {
     //Operação no banco de dados
     return db.query(`DELETE FROM recipes WHERE id = $1`, [id])
-  },
-
-  async chefSelectOptions() {
-    const results = await db.query('SELECT id, name FROM chefs');
-    return results.rows
   },
 
   async files(id) {

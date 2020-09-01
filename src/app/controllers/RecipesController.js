@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe');
+const Chef = require('../models/Chef');
 const File = require('../models/File');
 
 module.exports = {
@@ -36,7 +37,7 @@ module.exports = {
   async create(req, res) {
     try {
       // === Select Chefs
-      const chefOptions = await Recipe.chefSelectOptions();
+      const chefOptions = await Chef.findAll()
   
       // === End
       return res.render('admin/recipes/create.njk', { chefOptions })
@@ -92,7 +93,7 @@ module.exports = {
       const recipe = await Recipe.find(req.params.id);
   
       // === Select Chefs
-      const chefOptions = await Recipe.chefSelectOptions();
+      const chefOptions = await Chef.findAll();
   
       // === Select Files
       const results = await Recipe.files(recipe.id);

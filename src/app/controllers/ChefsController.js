@@ -38,11 +38,15 @@ module.exports = {
 
   async post(req, res) {
     try {
+      const { name } = req.body
       // === Insert File
       const fileId = await File.createFileChef(req.files);
   
       // === Insert Chef
-      const chefId = await Chef.create(req.body, fileId)
+      const chefId = await Chef.create({
+        name,
+        file_id: fileId
+      })
   
       // === End
       return res.redirect(`/admin/chefs/${chefId}`);
@@ -115,15 +119,23 @@ module.exports = {
 
   async put(req, res) {
     try {
+      const { id, name, photo_id } = req.body
       if(req.files.length == 0) {
         // === Update Chef
-        await Chef.update(req.body, req.body.photo_id);
+        await Chef.update(id, {
+          name,
+          file_id: photo_id
+        });
+        
       } else {
         // === Insert File
         const fileId = await File.createFileChef(req.files);
   
         // === Update Chef
-        await Chef.update(req.body, fileId);
+        await Chef.update(id, {
+          name,
+          file_id: fileId
+        });
   
         const removedFiles = req.body.removed_files.split(',');
         if(removedFiles) {

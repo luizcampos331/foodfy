@@ -1,10 +1,12 @@
 -- === CREATE DATABASE
-DROP DATABASE IF EXISTS foodfy;
+-- Se necessário rode o DROP SCHEMA e CREATE SCHEMA
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
+DROP DATABASE IF EXISTS foodfy;
 CREATE DATABASE foodfy;
 
 -- === CREATE TABLES
-
 -- User
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
@@ -14,7 +16,6 @@ CREATE TABLE "users" (
   "reset_token" text,
   "reset_token_expires" text,
   "is_admin" BOOLEAN,
-  "email" text NOT NULL,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );
@@ -100,12 +101,3 @@ CREATE TRIGGER trigger_set_timestamp
 BEFORE UPDATE ON chefs
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
-
--- === INSERT
--- Temporary user, please change the password in the "Forgot Password"
--- E-mail Temp = usuario@usuario.com, Password Temp = 123
-INSERT INTO users (
-  name, email, password, is_admin
-) values (
-  'Usuário', 'usuario@usuario.com', '$2a$08$KKgfoafQmCU/lSq60JYFQu1IPe7iw5BJWmDIz8VWYLljvM6GaXnFK', true
-);

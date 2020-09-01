@@ -7,7 +7,7 @@ module.exports = {
   async index(req, res) {
     try {
       // === Select Chefs
-      const users = await User.all()
+      const users = await User.findAll()
   
       // === End
       return res.render('admin/users/index.njk', { users })
@@ -22,8 +22,18 @@ module.exports = {
 
   async post(req, res) {
     try {
+      const { name, email, is_admin } = req.body
+      
+      const password = crypto.randomBytes(5).toString('hex')
+      const passwordHash = await hash(password, 8);
+      
       // === Create Chef
-      const password = await User.create(req.body);
+      await User.create({
+        name,
+        email,
+        password: passwordHash,
+        is_admin
+      });
 
       // === Send Email = Password
       await mailer.sendMail({
@@ -48,8 +58,11 @@ module.exports = {
   async edit(req, res) {
     try {
       // === Select Chef
-      const id = req.params.id
-      const user = await User.findOne({ where: { id } })
+      const user = await User.findOne({ 
+        where: { 
+          id: req.params.id 
+        } 
+      })
       
       // === End
       return res.render('admin/users/edit.njk', { user })
