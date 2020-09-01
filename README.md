@@ -18,8 +18,8 @@
   <a href="#bookmark-sobre">Sobre</a> |
   <a href="#computer-tecnologias-utilizadas">Tecnologias</a> |
   <a href="#dart-objetivo">Objetivo</a> |
-  <a href="#package-como-baixar-o-projeto">Baixar</a> |
   <a href="#gear-requisitos">Requisitos</a> |
+  <a href="#package-como-baixar-o-projeto">Baixar</a> |
   <a href="#bust_in_silhouette-autor">Autor</a> |
   <a href="#pencil-licença">Licença</a>
 </p>
@@ -58,6 +58,11 @@ Site tem como objetivo disponibilizar:
 - Cadastro, listagem, edição e exclusão de chefs
 - Vinculo de receitas com chefs
 
+## :gear: Requisitos:
+- Editor de código (recomendo o Visual Studio Code: https://code.visualstudio.com/)
+- Node JS (https://nodejs.org/en/)
+- PostgreSQL (https://www.postgresql.org/)
+
 ## :package: Como Baixar o projeto
 Pelo seu terminal, escolha um local para o projeto e rode os comandos:
 ```bash
@@ -71,11 +76,6 @@ Pelo seu terminal, escolha um local para o projeto e rode os comandos:
   $ npm install
 
 ```
-
-## :gear: Requisitos:
-- Editor de código (recomendo o Visual Studio Code: https://code.visualstudio.com/)
-- Node JS (https://nodejs.org/en/)
-- PostgreSQL (https://www.postgresql.org/)
 
 Obs: utilize o conteúdo do arquivo <a href="foodfy.sql">foodfy.sql</a> para a criação do banco de dados. Após a criação do banco de dados, crie dados fakes para testar a aplicação com o comando no terminal estando na pasta raiz do projeto:
 ```bash
